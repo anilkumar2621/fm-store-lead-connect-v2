@@ -3,24 +3,28 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>FM STORE-STYLES | Lead Connect</title>
 
     <meta name="description"
-        content="FM STORE-STYLES - Mobiles, Clothing & Mobile Repair">
+        content="FM STORE-STYLES Lead Connect - Mobile, Clothing & Repair Enquiry">
 
-    <meta name="theme-color"
-        content="#000000">
+    <meta name="theme-color" content="#ffffff">
 
-    <meta name="author"
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-status-bar-style"
+        content="default">
+
+    <meta name="apple-mobile-web-app-title"
         content="FM STORE-STYLES">
 
-    <meta name="robots"
-        content="index,follow">
+    <meta name="format-detection"
+        content="telephone=no">
 
     <link rel="preconnect"
         href="https://fonts.googleapis.com">
@@ -33,204 +37,180 @@
         rel="stylesheet">
 
     <link rel="stylesheet"
-        href="style.css">
+        href="styles.css">
 
 </head>
 
 <body>
 
-<div class="background-blur blur-1"></div>
-<div class="background-blur blur-2"></div>
+<div id="app">
 
-<div class="container">
+<!-- ======================================== -->
+<!-- Splash Screen -->
+<!-- ======================================== -->
 
-<header class="header">
+<section id="splashScreen">
 
-<div class="logo">
+    <div class="splash-logo">
+
+        <div class="logo-circle">
+
+            <span>FM</span>
+
+        </div>
+
+        <h1>
+
+            FM STORE-STYLES
+
+        </h1>
+
+        <p>
+
+            Premium Shopping Experience
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ======================================== -->
+<!-- Main App -->
+<!-- ======================================== -->
+
+<main id="mainApp"
+      class="hidden">
+
+<header class="hero">
+
+<div class="hero-top">
+
+<div class="brand">
+
+<div class="brand-logo">
+
+FM
+
+</div>
+
+<div>
+
+<h2>
+
+FM STORE-STYLES
+
+</h2>
+
+<p>
+
+Lead Connect
+
+</p>
+
+</div>
+
+</div>
+
+<button id="themeToggle"
+        aria-label="Theme">
+
+🌙
+
+</button>
+
+</div>
+
+<div class="hero-content">
 
 <h1>
 
-FM STORE-STYLES
+Tell us what you're looking for.
 
 </h1>
 
 <p>
 
-Premium Lifestyle Store
+Mobiles • Clothing • Mobile Repair
 
 </p>
 
 </div>
-
-<nav>
-
-<a href="#home">
-
-Home
-
-</a>
-
-<a href="#contact">
-
-Contact
-
-</a>
-
-</nav>
 
 </header>
 
-<section
-id="home"
-class="hero">
+<section class="card">
 
-<span class="badge">
+<form id="leadForm">
 
-Trusted Store • Telangana
+<!-- ============================== -->
+<!-- Category -->
+<!-- ============================== -->
 
-</span>
-
-<h2>
-
-Everything You Need,
-One Trusted Store.
-
-</h2>
-
-<p>
-
-Buy New Mobiles, Second-Hand Mobiles,
-Premium Clothing and Professional Mobile Repairs.
-
-</p>
-
-<div class="category-grid">
-    <div
-class="category-card active"
-data-category="mobile">
-
-<div class="category-icon">
-
-📱
-
-</div>
-
-<h3>
-
-Mobiles
-
-</h3>
-
-<p>
-
-New • Second-Hand • Accessories
-
-</p>
-
-</div>
-
-<div
-class="category-card"
-data-category="clothing">
-
-<div class="category-icon">
-
-👕
-
-</div>
-
-<h3>
-
-Clothing
-
-</h3>
-
-<p>
-
-Fashion • Shoes • Watches
-
-</p>
-
-</div>
-
-<div
-class="category-card"
-data-category="repair">
-
-<div class="category-icon">
-
-🛠
-
-</div>
-
-<h3>
-
-Repairs
-
-</h3>
-
-<p>
-
-Display • Battery • Software
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section
-class="form-section">
-
-<div class="form-card">
-
-<h2
-id="formTitle">
-
-Mobile Enquiry
-
-</h2>
-
-<p
-id="formSubtitle">
-
-Fill the details below and our team will contact you shortly.
-
-</p>
-
-<form
-id="leadForm">
-
-<input
-type="hidden"
-id="formType"
-value="Mobile">
-
-<div class="form-row">
-
-<div class="form-group">
+<div class="field">
 
 <label>
 
-Full Name *
+Select Category
+
+</label>
+
+<select id="category"
+        required>
+
+<option value="">
+
+Choose Category
+
+</option>
+
+<option value="Mobiles">
+
+Mobiles
+
+</option>
+
+<option value="Clothing">
+
+Clothing
+
+</option>
+
+<option value="Repair">
+
+Repair
+
+</option>
+
+</select>
+
+</div>
+
+<!-- ============================== -->
+<!-- Customer -->
+<!-- ============================== -->
+
+<div class="field">
+
+<label>
+
+Full Name
 
 </label>
 
 <input
 type="text"
-id="name"
-required
-placeholder="Enter your full name">
+id="customerName"
+placeholder="Enter your name"
+required>
 
 </div>
 
-<div class="form-group">
+<div class="field">
 
 <label>
 
-Mobile Number *
+Phone Number
 
 </label>
 
@@ -238,149 +218,98 @@ Mobile Number *
 type="tel"
 id="phone"
 maxlength="10"
-required
-placeholder="9876543210">
+inputmode="numeric"
+placeholder="9876543210"
+required>
 
 </div>
 
-</div>
-
-<div class="form-row">
-
-<div class="form-group">
+<div class="field">
 
 <label>
 
-City / Village
+WhatsApp Number
 
 </label>
 
 <input
-type="text"
-id="city"
-placeholder="Your Location">
+type="tel"
+id="whatsapp"
+maxlength="10"
+inputmode="numeric"
+placeholder="Optional">
 
 </div>
 
-<div class="form-group">
+<div class="field">
 
 <label>
 
-Interested In
-
-</label>
-
-<select id="interest">
-
-<option value="">
-Select
-</option>
-<option>New Mobile</option>
-
-<option>Second-Hand Mobile</option>
-
-<option>iPhone</option>
-
-<option>Android Phone</option>
-
-<option>Accessories</option>
-
-<option>Mobile Repair</option>
-
-<option>Clothing</option>
-
-<option>Shoes</option>
-
-<option>Watches</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div
-id="dynamicFields">
-
-<div class="form-row">
-
-<div class="form-group">
-
-<label>
-
-Budget
-
-</label>
-
-<select id="budget">
-
-<option value="">
-Select Budget
-</option>
-
-<option>Below ₹10,000</option>
-
-<option>₹10,000 - ₹20,000</option>
-
-<option>₹20,000 - ₹30,000</option>
-
-<option>₹30,000 - ₹50,000</option>
-
-<option>Above ₹50,000</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Model (Optional)
+Email Address
 
 </label>
 
 <input
-type="text"
-id="model"
-placeholder="Example: iPhone 13">
+type="email"
+id="email"
+placeholder="Optional">
 
 </div>
 
+<!-- ================================= -->
+<!-- Mobile Section -->
+<!-- ================================= -->
+
+<div id="mobileSection"
+     class="dynamic-section hidden">
+
+<div class="section-title">
+
+Mobile Details
+
 </div>
 
-<div
-class="form-group"
-id="problemGroup"
-style="display:none;">
+<div class="field">
 
 <label>
 
-Repair Problem
+Brand
 
 </label>
 
-<select id="problem">
+<select id="brand">
 
 <option value="">
-Select Problem
+
+Select Brand
+
 </option>
 
-<option>Display Broken</option>
+<option>Apple</option>
 
-<option>Battery Issue</option>
+<option>Samsung</option>
 
-<option>Charging Issue</option>
+<option>OnePlus</option>
 
-<option>Camera Issue</option>
+<option>Google Pixel</option>
 
-<option>Software Issue</option>
+<option>Motorola</option>
 
-<option>Water Damage</option>
+<option>Vivo</option>
 
-<option>Speaker / Mic</option>
+<option>Oppo</option>
 
-<option>Network Issue</option>
+<option>Realme</option>
+
+<option>Xiaomi</option>
+
+<option>Nothing</option>
+
+<option>IQOO</option>
+
+<option>Poco</option>
+
+<option>Honor</option>
 
 <option>Other</option>
 
@@ -388,278 +317,474 @@ Select Problem
 
 </div>
 
-<div class="form-group">
+<div
+id="otherBrandContainer"
+class="field hidden">
 
 <label>
 
-Message
+Other Brand
 
 </label>
 
-<textarea
-id="message"
-rows="5"
-placeholder="Tell us what you're looking for..."></textarea>
+<input
+type="text"
+id="otherBrand"
+placeholder="Enter Brand">
+
+</div>
+
+<div class="field">
+
+<label>
+
+Model
+
+</label>
+
+<input
+type="text"
+id="model"
+placeholder="Example: iPhone 15">
+
+</div>
+
+<div class="grid-2">
+
+<div class="field">
+
+<label>
+
+RAM
+
+</label>
+
+<select id="ram">
+
+<option value="">Select</option>
+
+<option>2 GB</option>
+
+<option>3 GB</option>
+
+<option>4 GB</option>
+
+<option>6 GB</option>
+
+<option>8 GB</option>
+
+<option>12 GB</option>
+
+<option>16 GB</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>
+
+Storage
+
+</label>
+
+<select id="storage">
+
+<option value="">Select</option>
+
+<option>32 GB</option>
+
+<option>64 GB</option>
+
+<option>128 GB</option>
+
+<option>256 GB</option>
+
+<option>512 GB</option>
+
+<option>1 TB</option>
+
+</select>
 
 </div>
 
 </div>
+
+<div class="field">
+
+<label>
+
+Preferred Colour
+
+</label>
+
+<input
+type="text"
+id="mobileColor"
+placeholder="Black">
+
+</div>
+<!-- ================================= -->
+<!-- Clothing Section -->
+<!-- ================================= -->
+
+<div id="clothingSection"
+     class="dynamic-section hidden">
+
+    <div class="section-title">
+
+        Clothing Details
+
+    </div>
+
+    <div class="field">
+
+        <label>
+
+            Product Type
+
+        </label>
+
+        <select id="productType">
+
+            <option value="">Select Product</option>
+
+            <option>T-Shirt</option>
+            <option>Shirt</option>
+            <option>Jeans</option>
+            <option>Trousers</option>
+            <option>Track Pant</option>
+            <option>Hoodie</option>
+            <option>Jacket</option>
+            <option>Sweatshirt</option>
+            <option>Shorts</option>
+            <option>Cargo</option>
+            <option>Shoes</option>
+            <option>Crocs</option>
+            <option>Watch</option>
+            <option>Belt</option>
+            <option>Cap</option>
+            <option>Wallet</option>
+            <option>Other</option>
+
+        </select>
+
+    </div>
+
+    <div class="grid-2">
+
+        <div class="field">
+
+            <label>
+
+                Size
+
+            </label>
+
+            <select id="size">
+
+                <option value="">Select Size</option>
+
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>28</option>
+                <option>30</option>
+                <option>32</option>
+                <option>34</option>
+                <option>36</option>
+                <option>38</option>
+                <option>40</option>
+                <option>42</option>
+                <option>44</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>
+
+                Gender
+
+            </label>
+
+            <select id="gender">
+
+                <option value="">Select</option>
+
+                <option>Men</option>
+                <option>Women</option>
+                <option>Unisex</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="field">
+
+        <label>
+
+            Preferred Colour
+
+        </label>
+
+        <input
+            type="text"
+            id="clothColor"
+            placeholder="Example: Black">
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- Repair Section -->
+<!-- ================================= -->
+
+<div id="repairSection"
+     class="dynamic-section hidden">
+
+    <div class="section-title">
+
+        Repair Details
+
+    </div>
+
+    <div class="field">
+
+        <label>
+
+            Device Brand
+
+        </label>
+
+        <input
+            type="text"
+            id="repairBrand"
+            placeholder="Apple, Samsung...">
+
+    </div>
+
+    <div class="field">
+
+        <label>
+
+            Device Model
+
+        </label>
+
+        <input
+            type="text"
+            id="repairModel"
+            placeholder="Device Model">
+
+    </div>
+
+    <div class="field">
+
+        <label>
+
+            Problem Description
+
+        </label>
+
+        <textarea
+            id="repairIssue"
+            rows="5"
+            placeholder="Describe the issue..."></textarea>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- Common Notes -->
+<!-- ================================= -->
+
+<div class="field">
+
+    <label>
+
+        Additional Notes
+
+    </label>
+
+    <textarea
+        id="notes"
+        rows="4"
+        placeholder="Anything you'd like to tell us?"></textarea>
+
+</div>
+
+<!-- ================================= -->
+<!-- Submit -->
+<!-- ================================= -->
 
 <button
-type="submit"
-class="submit-btn">
+    id="submitBtn"
+    type="submit"
+    class="primary-btn">
 
-Submit Enquiry
+    Submit Enquiry
 
 </button>
 
 </form>
 
-</div>
-
 </section>
-<section class="trust-section">
 
-<div class="section-title">
-
-<h2>
-
-Why Choose FM STORE-STYLES?
-
-</h2>
-
-<p>
-
-Trusted by customers for mobiles, fashion and repair services.
-
-</p>
-
-</div>
-
-<div class="trust-grid">
-
-<div class="trust-card">
-
-<div class="trust-icon">⭐</div>
-
-<h3>Quality Products</h3>
-
-<p>
-
-Genuine mobiles, accessories and fashion products.
-
-</p>
-
-</div>
-
-<div class="trust-card">
-
-<div class="trust-icon">🛠</div>
-
-<h3>Expert Repair</h3>
-
-<p>
-
-Fast and reliable repair service using quality spare parts.
-
-</p>
-
-</div>
-
-<div class="trust-card">
-
-<div class="trust-icon">🤝</div>
-
-<h3>Trusted Service</h3>
-
-<p>
-
-Friendly support before and after every purchase.
-
-</p>
-
-</div>
-
-<div class="trust-card">
-
-<div class="trust-icon">⚡</div>
-
-<h3>Quick Response</h3>
-
-<p>
-
-Most enquiries receive a response within business hours.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
+<!-- ================================= -->
+<!-- Loading Screen -->
+<!-- ================================= -->
 
 <section
-id="contact"
-class="contact-section">
+    id="loadingScreen"
+    class="overlay hidden">
 
-<div class="contact-card">
+    <div class="loader-card">
 
-<h2>
+        <div class="spinner"></div>
 
-Visit FM STORE-STYLES
+        <h3>
 
-</h2>
+            Sending your enquiry...
 
-<p>
+        </h3>
 
-Main Road, Eturnagaram, Mulugu, Telangana
+        <p>
 
-</p>
+            Please wait a moment.
 
-<div class="contact-buttons">
+        </p>
 
-<a
-class="primary-btn"
-href="https://wa.me/917382480359"
-target="_blank">
-
-WhatsApp
-
-</a>
-
-<a
-class="secondary-btn"
-href="tel:+917382480359">
-
-Call Now
-
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
+
+<!-- ================================= -->
+<!-- Success Screen -->
+<!-- ================================= -->
+
+<section
+    id="successScreen"
+    class="overlay hidden">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+
+            ✓
+
+        </div>
+
+        <h2>
+
+            Thank You!
+
+        </h2>
+
+        <p>
+
+            Your enquiry has been submitted successfully.
+
+        </p>
+
+        <div class="lead-box">
+
+            <span>
+
+                Lead ID
+
+            </span>
+
+            <strong id="leadNumber">
+
+                --
+
+            </strong>
+
+        </div>
+
+        <button
+            id="newEnquiryBtn"
+            class="primary-btn">
+
+            Submit Another Enquiry
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Offline Banner -->
+<!-- ================================= -->
+
+<div
+    id="offlineBanner"
+    class="offline hidden">
+
+    No internet connection.
+
+</div>
+<!-- ================================= -->
+<!-- Footer -->
+<!-- ================================= -->
+
 <footer class="footer">
 
-<div class="footer-content">
+    <p>
 
-<div>
+        © <span id="currentYear"></span> FM STORE-STYLES
 
-<h3>
+    </p>
 
-FM STORE-STYLES
+    <p>
 
-</h3>
+        Premium Mobile • Clothing • Repair
 
-<p>
-
-Your trusted destination for mobiles, fashion and repairs.
-
-</p>
-
-</div>
-
-<div class="footer-links">
-
-<a href="#home">
-
-Home
-
-</a>
-
-<a href="#contact">
-
-Contact
-
-</a>
-
-<a
-href="https://wa.me/917382480359"
-target="_blank">
-
-WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<p>
-
-© <span id="year"></span> FM STORE-STYLES. All Rights Reserved.
-
-</p>
-
-</div>
+    </p>
 
 </footer>
 
-<!-- Loading Overlay -->
-
-<div
-id="loadingOverlay"
-class="loading-overlay">
-
-<div class="loader"></div>
-
-<p>
-
-Submitting your enquiry...
-
-</p>
+</main>
 
 </div>
 
-<!-- Success Modal -->
+<!-- ================================= -->
+<!-- Toast Notification -->
+<!-- ================================= -->
 
-<div
-id="successModal"
-class="modal">
+<div id="toast" class="toast hidden">
 
-<div class="modal-content">
+    <span id="toastMessage">
 
-<div class="success-icon">
+        Message
 
-✅
-
-</div>
-
-<h2>
-
-Thank You!
-
-</h2>
-
-<p>
-
-Your enquiry has been submitted successfully.
-
-</p>
-
-<p>
-
-Our team will contact you shortly.
-
-</p>
-
-<button
-id="closeSuccess"
-class="primary-btn">
-
-Done
-
-</button>
+    </span>
 
 </div>
 
-</div>
-<script src="script.js"></script>
+<!-- ================================= -->
+<!-- Configuration -->
+<!-- ================================= -->
 
-</div>
+<script src="config.js"></script>
+
+<!-- ================================= -->
+<!-- Application -->
+<!-- ================================= -->
+
+<script src="app.js"></script>
 
 </body>
 
