@@ -1,46 +1,190 @@
-/*
-==========================================================
-FM STORE-STYLES Lead Connect V2
-Configuration
-==========================================================
-*/
+/* ==========================================================
+   FM STORE-STYLES Lead Connect V3
+   Production Configuration
+========================================================== */
 
-const CONFIG = {
+'use strict';
 
-    API_URL: "https://script.google.com/macros/s/AKfycbyjBFpqSc_OMxhquvBPOObtnQnDt22aFIGIbkCZZubC48jlz6e_BayTAV3NPrGDtXVQbA/exec",
+const CONFIG = Object.freeze({
 
-    APP_NAME: "FM STORE-STYLES Lead Connect",
+    /* ======================================================
+       Application
+    ====================================================== */
 
-    APP_VERSION: "2.1.0",
+    APP: {
 
-    COMPANY: "FM STORE-STYLES",
+        NAME: 'FM STORE-STYLES',
 
-    REQUEST_TIMEOUT: 20000,
+        VERSION: '3.0.0',
 
-    RETRY_COUNT: 2,
-
-    RETRY_DELAY: 1500,
-
-    STORAGE: {
-
-        THEME: "fm_theme",
-
-        LAST_CATEGORY: "fm_last_category"
+        ENVIRONMENT: 'production'
 
     },
 
-    SOURCE: {
+    /* ======================================================
+       Backend
+    ====================================================== */
 
-        NAME: "GitHub Pages",
+    API: {
 
-        MEDIUM: "Website",
+        BASE_URL: '',
 
-        CAMPAIGN: "Lead Connect V2"
+        TIMEOUT: 30000
+
+    },
+
+    /* ======================================================
+       Google Sheets
+    ====================================================== */
+
+    SHEETS: {
+
+        SHEET_NAME: 'Leads'
+
+    },
+
+    /* ======================================================
+       Branches
+    ====================================================== */
+
+    BRANCHES: [
+
+        'Eturnagaram',
+
+        'Mulugu',
+
+        'Head Office'
+
+    ],
+
+    /* ======================================================
+       Categories
+    ====================================================== */
+
+    CATEGORIES: [
+
+        'Mobile',
+
+        'Mens Wear',
+
+        'Repair'
+
+    ],
+
+    /* ======================================================
+       Mobile Brands
+    ====================================================== */
+
+    MOBILE_BRANDS: [
+
+        'Apple',
+
+        'Samsung',
+
+        'OnePlus',
+
+        'Google',
+
+        'Motorola',
+
+        'Nothing',
+
+        'Xiaomi',
+
+        'Redmi',
+
+        'POCO',
+
+        'Realme',
+
+        'Vivo',
+
+        'Oppo',
+
+        'IQOO',
+
+        'Honor',
+
+        'Nokia',
+
+        'Other'
+
+    ],
+
+    /* ======================================================
+       Clothing Sizes
+    ====================================================== */
+
+    SIZES: [
+
+        'XS',
+
+        'S',
+
+        'M',
+
+        'L',
+
+        'XL',
+
+        'XXL',
+
+        '3XL'
+
+    ],
+
+    /* ======================================================
+       Gender
+    ====================================================== */
+
+    GENDER: [
+
+        'Men'
+
+    ],
+
+    /* ======================================================
+       Validation
+    ====================================================== */
+
+    VALIDATION: {
+
+        PHONE_LENGTH: 10,
+
+        NAME_MIN: 2,
+
+        MODEL_MIN: 2,
+
+        MESSAGE_MAX: 500
+
+    },
+
+    /* ======================================================
+       UI
+    ====================================================== */
+
+    UI: {
+
+        LOADER_DELAY: 600,
+
+        TOAST_DURATION: 3000,
+
+        ANIMATION_DURATION: 300
+
+    },
+
+    /* ======================================================
+       Local Storage Keys
+    ====================================================== */
+
+    STORAGE: {
+
+        LAST_FORM: 'fm_last_form',
+
+        CUSTOMER: 'fm_customer',
+
+        DRAFT: 'fm_draft'
 
     }
 
-};
-
-Object.freeze(CONFIG);
-Object.freeze(CONFIG.STORAGE);
-Object.freeze(CONFIG.SOURCE);
+});

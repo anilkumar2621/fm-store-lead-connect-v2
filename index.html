@@ -1,791 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <!-- =========================================================
+       FM STORE-STYLES Lead Connect V3
+       Production Build
+  ========================================================== -->
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
-    <title>FM STORE-STYLES | Lead Connect</title>
+  <title>FM STORE-STYLES</title>
 
-    <meta name="description"
-        content="FM STORE-STYLES Lead Connect - Mobile, Clothing & Repair Enquiry">
+  <meta
+    name="description"
+    content="FM STORE-STYLES Lead Connect"
+  >
 
-    <meta name="theme-color" content="#ffffff">
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
 
-    <meta name="apple-mobile-web-app-status-bar-style"
-        content="default">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
 
-    <meta name="apple-mobile-web-app-title"
-        content="FM STORE-STYLES">
+  <meta
+    name="apple-mobile-web-app-title"
+    content="FM STORE-STYLES"
+  >
 
-    <meta name="format-detection"
-        content="telephone=no">
+  <meta property="og:title" content="FM STORE-STYLES">
+  <meta
+    property="og:description"
+    content="Lead Connect"
+  >
 
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+  <meta property="og:type" content="website">
 
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+  <link rel="manifest" href="manifest.json">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+  <link
+    rel="icon"
+    href="assets/icons/favicon.png"
+  >
 
-    <link rel="stylesheet"
-        href="style.css">
+  <link
+    rel="apple-touch-icon"
+    href="assets/icons/icon-192.png"
+  >
 
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 </head>
 
 <body>
 
+<!-- ==========================================================
+     App
+=========================================================== -->
+
 <div id="app">
 
-<!-- ======================================== -->
-<!-- Splash Screen -->
-<!-- ======================================== -->
+  <!-- Splash Loader -->
 
-<section id="splashScreen">
+  <div id="loader" class="loader">
 
-    <div class="splash-logo">
+    <div class="loader-logo">
 
-        <div class="logo-circle">
-
-            <span>FM</span>
-
-        </div>
-
-        <h1>
-
-            FM STORE-STYLES
-
-        </h1>
-
-        <p>
-
-            Premium Shopping Experience
-
-        </p>
+      FM
 
     </div>
 
-</section>
+    <div class="loader-text">
 
-<!-- ======================================== -->
-<!-- Main App -->
-<!-- ======================================== -->
-
-<main id="mainApp"
-      class="hidden">
-
-<header class="hero">
-
-<div class="hero-top">
-
-<div class="brand">
-
-<div class="brand-logo">
-
-FM
-
-</div>
-
-<div>
-
-<h2>
-
-FM STORE-STYLES
-
-</h2>
-
-<p>
-
-Lead Connect
-
-</p>
-
-</div>
-
-</div>
-
-<button id="themeToggle"
-        aria-label="Theme">
-
-🌙
-
-</button>
-
-</div>
-
-<div class="hero-content">
-
-<h1>
-
-Tell us what you're looking for.
-
-</h1>
-
-<p>
-
-Mobiles • Clothing • Mobile Repair
-
-</p>
-
-</div>
-
-</header>
-
-<section class="card">
-
-<form id="leadForm">
-
-<!-- ============================== -->
-<!-- Category -->
-<!-- ============================== -->
-
-<div class="field">
-
-<label>
-
-Select Category
-
-</label>
-
-<select id="category"
-        required>
-
-<option value="">
-
-Choose Category
-
-</option>
-
-<option value="Mobiles">
-
-Mobiles
-
-</option>
-
-<option value="Clothing">
-
-Clothing
-
-</option>
-
-<option value="Repair">
-
-Repair
-
-</option>
-
-</select>
-
-</div>
-
-<!-- ============================== -->
-<!-- Customer -->
-<!-- ============================== -->
-
-<div class="field">
-
-<label>
-
-Full Name
-
-</label>
-
-<input
-type="text"
-id="customerName"
-placeholder="Enter your name"
-required>
-
-</div>
-
-<div class="field">
-
-<label>
-
-Phone Number
-
-</label>
-
-<input
-type="tel"
-id="phone"
-maxlength="10"
-inputmode="numeric"
-placeholder="9876543210"
-required>
-
-</div>
-
-<div class="field">
-
-<label>
-
-WhatsApp Number
-
-</label>
-
-<input
-type="tel"
-id="whatsapp"
-maxlength="10"
-inputmode="numeric"
-placeholder="Optional">
-
-</div>
-
-<div class="field">
-
-<label>
-
-Email Address
-
-</label>
-
-<input
-type="email"
-id="email"
-placeholder="Optional">
-
-</div>
-
-<!-- ================================= -->
-<!-- Mobile Section -->
-<!-- ================================= -->
-
-<div id="mobileSection"
-     class="dynamic-section hidden">
-
-<div class="section-title">
-
-Mobile Details
-
-</div>
-
-<div class="field">
-
-<label>
-
-Brand
-
-</label>
-
-<select id="brand">
-
-<option value="">
-
-Select Brand
-
-</option>
-
-<option>Apple</option>
-
-<option>Samsung</option>
-
-<option>OnePlus</option>
-
-<option>Google Pixel</option>
-
-<option>Motorola</option>
-
-<option>Vivo</option>
-
-<option>Oppo</option>
-
-<option>Realme</option>
-
-<option>Xiaomi</option>
-
-<option>Nothing</option>
-
-<option>IQOO</option>
-
-<option>Poco</option>
-
-<option>Honor</option>
-
-<option>Other</option>
-
-</select>
-
-</div>
-
-<div
-id="otherBrandContainer"
-class="field hidden">
-
-<label>
-
-Other Brand
-
-</label>
-
-<input
-type="text"
-id="otherBrand"
-placeholder="Enter Brand">
-
-</div>
-
-<div class="field">
-
-<label>
-
-Model
-
-</label>
-
-<input
-type="text"
-id="model"
-placeholder="Example: iPhone 15">
-
-</div>
-
-<div class="grid-2">
-
-<div class="field">
-
-<label>
-
-RAM
-
-</label>
-
-<select id="ram">
-
-<option value="">Select</option>
-
-<option>2 GB</option>
-
-<option>3 GB</option>
-
-<option>4 GB</option>
-
-<option>6 GB</option>
-
-<option>8 GB</option>
-
-<option>12 GB</option>
-
-<option>16 GB</option>
-
-</select>
-
-</div>
-
-<div class="field">
-
-<label>
-
-Storage
-
-</label>
-
-<select id="storage">
-
-<option value="">Select</option>
-
-<option>32 GB</option>
-
-<option>64 GB</option>
-
-<option>128 GB</option>
-
-<option>256 GB</option>
-
-<option>512 GB</option>
-
-<option>1 TB</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div class="field">
-
-<label>
-
-Preferred Colour
-
-</label>
-
-<input
-type="text"
-id="mobileColor"
-placeholder="Black">
-
-</div>
-<!-- ================================= -->
-<!-- Clothing Section -->
-<!-- ================================= -->
-
-<div id="clothingSection"
-     class="dynamic-section hidden">
-
-    <div class="section-title">
-
-        Clothing Details
+      STORE-STYLES
 
     </div>
 
-    <div class="field">
+  </div>
 
-        <label>
+  <!-- Main App -->
 
-            Product Type
+  <main
+    id="appContainer"
+    class="hidden"
+  >
 
-        </label>
-
-        <select id="productType">
-
-            <option value="">Select Product</option>
-
-            <option>T-Shirt</option>
-            <option>Shirt</option>
-            <option>Jeans</option>
-            <option>Trousers</option>
-            <option>Track Pant</option>
-            <option>Hoodie</option>
-            <option>Jacket</option>
-            <option>Sweatshirt</option>
-            <option>Shorts</option>
-            <option>Cargo</option>
-            <option>Shoes</option>
-            <option>Crocs</option>
-            <option>Watch</option>
-            <option>Belt</option>
-            <option>Cap</option>
-            <option>Wallet</option>
-            <option>Other</option>
-
-        </select>
-
-    </div>
-
-    <div class="grid-2">
-
-        <div class="field">
-
-            <label>
-
-                Size
-
-            </label>
-
-            <select id="size">
-
-                <option value="">Select Size</option>
-
-                <option>XS</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-                <option>XXL</option>
-                <option>28</option>
-                <option>30</option>
-                <option>32</option>
-                <option>34</option>
-                <option>36</option>
-                <option>38</option>
-                <option>40</option>
-                <option>42</option>
-                <option>44</option>
-
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>
-
-                Gender
-
-            </label>
-
-            <select id="gender">
-
-                <option value="">Select</option>
-
-                <option>Men</option>
-                <option>Women</option>
-                <option>Unisex</option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-    <div class="field">
-
-        <label>
-
-            Preferred Colour
-
-        </label>
-
-        <input
-            type="text"
-            id="clothColor"
-            placeholder="Example: Black">
-
-    </div>
+  </main>
 
 </div>
 
-<!-- ================================= -->
-<!-- Repair Section -->
-<!-- ================================= -->
+<!-- ==========================================================
+     Global Components
+=========================================================== -->
 
-<div id="repairSection"
-     class="dynamic-section hidden">
+<div id="toastContainer"></div>
 
-    <div class="section-title">
+<div id="modalRoot"></div>
 
-        Repair Details
+<div id="bottomSheetRoot"></div>
 
-    </div>
-
-    <div class="field">
-
-        <label>
-
-            Device Brand
-
-        </label>
-
-        <input
-            type="text"
-            id="repairBrand"
-            placeholder="Apple, Samsung...">
-
-    </div>
-
-    <div class="field">
-
-        <label>
-
-            Device Model
-
-        </label>
-
-        <input
-            type="text"
-            id="repairModel"
-            placeholder="Device Model">
-
-    </div>
-
-    <div class="field">
-
-        <label>
-
-            Problem Description
-
-        </label>
-
-        <textarea
-            id="repairIssue"
-            rows="5"
-            placeholder="Describe the issue..."></textarea>
-
-    </div>
-
-</div>
-
-<!-- ================================= -->
-<!-- Common Notes -->
-<!-- ================================= -->
-
-<div class="field">
-
-    <label>
-
-        Additional Notes
-
-    </label>
-
-    <textarea
-        id="notes"
-        rows="4"
-        placeholder="Anything you'd like to tell us?"></textarea>
-
-</div>
-
-<!-- ================================= -->
-<!-- Submit -->
-<!-- ================================= -->
-
-<button
-    id="submitBtn"
-    type="submit"
-    class="primary-btn">
-
-    Submit Enquiry
-
-</button>
-
-</form>
-
-</section>
-
-<!-- ================================= -->
-<!-- Loading Screen -->
-<!-- ================================= -->
-
-<section
-    id="loadingScreen"
-    class="overlay hidden">
-
-    <div class="loader-card">
-
-        <div class="spinner"></div>
-
-        <h3>
-
-            Sending your enquiry...
-
-        </h3>
-
-        <p>
-
-            Please wait a moment.
-
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ================================= -->
-<!-- Success Screen -->
-<!-- ================================= -->
-
-<section
-    id="successScreen"
-    class="overlay hidden">
-
-    <div class="success-card">
-
-        <div class="success-icon">
-
-            ✓
-
-        </div>
-
-        <h2>
-
-            Thank You!
-
-        </h2>
-
-        <p>
-
-            Your enquiry has been submitted successfully.
-
-        </p>
-
-        <div class="lead-box">
-
-            <span>
-
-                Lead ID
-
-            </span>
-
-            <strong id="leadNumber">
-
-                --
-
-            </strong>
-
-        </div>
-
-        <button
-            id="newEnquiryBtn"
-            class="primary-btn">
-
-            Submit Another Enquiry
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ================================= -->
-<!-- Offline Banner -->
-<!-- ================================= -->
-
-<div
-    id="offlineBanner"
-    class="offline hidden">
-
-    No internet connection.
-
-</div>
-<!-- ================================= -->
-<!-- Footer -->
-<!-- ================================= -->
-
-<footer class="footer">
-
-    <p>
-
-        © <span id="currentYear"></span> FM STORE-STYLES
-
-    </p>
-
-    <p>
-
-        Premium Mobile • Clothing • Repair
-
-    </p>
-
-</footer>
-
-</main>
-
-</div>
-
-<!-- ================================= -->
-<!-- Toast Notification -->
-<!-- ================================= -->
-
-<div id="toast" class="toast hidden">
-
-    <span id="toastMessage">
-
-        Message
-
-    </span>
-
-</div>
-
-<!-- ================================= -->
-<!-- Configuration -->
-<!-- ================================= -->
+<!-- ==========================================================
+     Scripts
+=========================================================== -->
 
 <script src="config.js"></script>
 
-<!-- ================================= -->
-<!-- Application -->
-<!-- ================================= -->
-
-<script src="app.js"></script>
+<script src="app.js" defer></script>
 
 </body>
-
 </html>

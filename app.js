@@ -1,920 +1,261 @@
-/*
-==========================================================
-FM STORE-STYLES Lead Connect V2
-Application
-==========================================================
-*/
+/* ==========================================================
+   FM STORE-STYLES Lead Connect V3
+   app.js
+   Part 1 — Core Application
+========================================================== */
 
-"use strict";
+'use strict';
 
-/* ======================================================
-   APP STATE
-====================================================== */
+/* ==========================================================
+   Application
+========================================================== */
 
-const STATE = {
+const App = {
 
-    submitting: false,
+    init() {
 
-    online: navigator.onLine
+        console.log(
+            `${CONFIG.APP.NAME} v${CONFIG.APP.VERSION}`
+        );
+
+        UI.cache();
+
+        UI.bind();
+
+        App.showLoader();
+
+        setTimeout(() => {
+
+            App.hideLoader();
+
+        }, CONFIG.UI.LOADER_DELAY);
+
+    },
+
+    showLoader() {
+
+        if (!UI.loader || !UI.appContainer) return;
+
+        UI.loader.classList.remove('hidden');
+
+        UI.appContainer.classList.add('hidden');
+
+    },
+
+    hideLoader() {
+
+        if (!UI.loader || !UI.appContainer) return;
+
+        UI.loader.classList.add('hidden');
+
+        UI.appContainer.classList.remove('hidden');
+
+    }
 
 };
 
-/* ======================================================
-   DOM
-====================================================== */
+/* ==========================================================
+   UI
+========================================================== */
 
-const DOM = {
+const UI = {
 
-    splash: document.getElementById("splashScreen"),
+    app: null,
 
-    app: document.getElementById("mainApp"),
+    loader: null,
 
-    form: document.getElementById("leadForm"),
+    appContainer: null,
 
-    category: document.getElementById("category"),
+    toastContainer: null,
 
-    mobileSection: document.getElementById("mobileSection"),
+    modalRoot: null,
 
-    clothingSection: document.getElementById("clothingSection"),
+    bottomSheetRoot: null,
 
-    repairSection: document.getElementById("repairSection"),
+    cache() {
 
-    brand: document.getElementById("brand"),
+        this.app = document.getElementById('app');
 
-    otherBrandContainer:
-        document.getElementById("otherBrandContainer"),
+        this.loader = document.getElementById('loader');
 
-    otherBrand:
-        document.getElementById("otherBrand"),
+        this.appContainer = document.getElementById('appContainer');
 
-    submit:
-        document.getElementById("submitBtn"),
+        this.toastContainer = document.getElementById('toastContainer');
 
-    loading:
-        document.getElementById("loadingScreen"),
+        this.modalRoot = document.getElementById('modalRoot');
 
-    success:
-        document.getElementById("successScreen"),
+        this.bottomSheetRoot = document.getElementById('bottomSheetRoot');
 
-    leadNumber:
-        document.getElementById("leadNumber"),
+    },
 
-    newEnquiry:
-        document.getElementById("newEnquiryBtn"),
+    bind() {
 
-    toast:
-        document.getElementById("toast"),
+        window.addEventListener('online', () => {
 
-    toastMessage:
-        document.getElementById("toastMessage"),
+            if (typeof Toast !== 'undefined') {
 
-    theme:
-        document.getElementById("themeToggle"),
+                Toast.show('Back online', 'success');
 
-    offline:
-        document.getElementById("offlineBanner"),
+            }
 
-    year:
-        document.getElementById("currentYear")
+        });
+
+        window.addEventListener('offline', () => {
+
+            if (typeof Toast !== 'undefined') {
+
+                Toast.show('No internet connection', 'warning');
+
+            }
+
+        });
+
+    }
 
 };
 
-/* ======================================================
-   INIT
-====================================================== */
+/* ==========================================================
+   Start Application
+========================================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    init
-);
+document.addEventListener('DOMContentLoaded', () => {
 
-function init(){
+    App.init();
 
-    DOM.year.textContent =
-        new Date().getFullYear();
+});
+/* ==========================================================
+   Storage
+========================================================== */
 
-    restoreTheme();
+const Storage = {
 
-    restoreCategory();
-
-    updateNetwork();
-
-    registerEvents();
-
-    startSplash();
-
-}
-
-/* ======================================================
-   SPLASH
-====================================================== */
-
-function startSplash(){
-
-    setTimeout(()=>{
-
-        DOM.splash.style.opacity="0";
-
-        setTimeout(()=>{
-
-            DOM.splash.remove();
-
-            DOM.app.classList.remove("hidden");
-
-        },600);
-
-    },1400);
-
-}
-
-/* ======================================================
-   EVENTS
-====================================================== */
-
-function registerEvents(){
-
-    DOM.category.addEventListener(
-
-        "change",
-
-        updateCategory
-
-    );
-
-    DOM.brand.addEventListener(
-
-        "change",
-
-        updateBrand
-
-    );
-
-    DOM.form.addEventListener(
-
-        "submit",
-
-        submitLead
-
-    );
-
-    DOM.newEnquiry.addEventListener(
-
-        "click",
-
-        resetForm
-
-    );
-
-    DOM.theme.addEventListener(
-
-        "click",
-
-        toggleTheme
-
-    );
-
-    window.addEventListener(
-
-        "online",
-
-        updateNetwork
-
-    );
-
-    window.addEventListener(
-
-        "offline",
-
-        updateNetwork
-
-    );
-
-}
-/* ======================================================
-   THEME
-====================================================== */
-
-function toggleTheme() {
-
-    document.body.classList.toggle("dark");
-
-    const isDark = document.body.classList.contains("dark");
-
-    DOM.theme.textContent = isDark ? "☀️" : "🌙";
-
-    localStorage.setItem(
-        CONFIG.STORAGE.THEME,
-        isDark ? "dark" : "light"
-    );
-
-}
-
-function restoreTheme() {
-
-    const saved = localStorage.getItem(
-        CONFIG.STORAGE.THEME
-    );
-
-    if (saved === "dark") {
-
-        document.body.classList.add("dark");
-
-        DOM.theme.textContent = "☀️";
-
-    } else {
-
-        DOM.theme.textContent = "🌙";
-
-    }
-
-}
-
-/* ======================================================
-   NETWORK
-====================================================== */
-
-function updateNetwork() {
-
-    STATE.online = navigator.onLine;
-
-    if (STATE.online) {
-
-        DOM.offline.classList.add("hidden");
-
-    } else {
-
-        DOM.offline.classList.remove("hidden");
-
-    }
-
-}
-
-/* ======================================================
-   CATEGORY
-====================================================== */
-
-function updateCategory() {
-
-    DOM.mobileSection.classList.add("hidden");
-    DOM.clothingSection.classList.add("hidden");
-    DOM.repairSection.classList.add("hidden");
-
-    localStorage.setItem(
-        CONFIG.STORAGE.LAST_CATEGORY,
-        DOM.category.value
-    );
-
-    switch (DOM.category.value) {
-
-        case "Mobiles":
-
-            DOM.mobileSection.classList.remove("hidden");
-
-            break;
-
-        case "Clothing":
-
-            DOM.clothingSection.classList.remove("hidden");
-
-            break;
-
-        case "Repair":
-
-            DOM.repairSection.classList.remove("hidden");
-
-            break;
-
-    }
-
-}
-
-/* ======================================================
-   RESTORE CATEGORY
-====================================================== */
-
-function restoreCategory() {
-
-    const saved = localStorage.getItem(
-        CONFIG.STORAGE.LAST_CATEGORY
-    );
-
-    if (!saved) return;
-
-    DOM.category.value = saved;
-
-    updateCategory();
-
-}
-
-/* ======================================================
-   BRAND
-====================================================== */
-
-function updateBrand() {
-
-    if (DOM.brand.value === "Other") {
-
-        DOM.otherBrandContainer.classList.remove(
-            "hidden"
-        );
-
-        DOM.otherBrand.required = true;
-
-        DOM.otherBrand.focus();
-
-    } else {
-
-        DOM.otherBrandContainer.classList.add(
-            "hidden"
-        );
-
-        DOM.otherBrand.required = false;
-
-        DOM.otherBrand.value = "";
-
-    }
-
-}
-
-/* ======================================================
-   TOAST
-====================================================== */
-
-function showToast(message) {
-
-    DOM.toastMessage.textContent = message;
-
-    DOM.toast.classList.remove("hidden");
-
-    setTimeout(() => {
-
-        DOM.toast.classList.add("hidden");
-
-    }, 2500);
-
-}
-/* ======================================================
-   VALIDATION
-====================================================== */
-
-function validateForm() {
-
-    const customerName = document
-        .getElementById("customerName")
-        .value
-        .trim();
-
-    if (!customerName) {
-
-        showToast("Please enter Customer Name.");
-
-        return false;
-
-    }
-
-    const phone = document
-        .getElementById("phone")
-        .value
-        .trim();
-
-    if (!/^[0-9]{10}$/.test(phone)) {
-
-        showToast("Enter a valid 10 digit phone number.");
-
-        return false;
-
-    }
-
-    const whatsapp = document
-        .getElementById("whatsapp")
-        .value
-        .trim();
-
-    if (
-        whatsapp &&
-        !/^[0-9]{10}$/.test(whatsapp)
-    ) {
-
-        showToast(
-            "Enter a valid WhatsApp Number."
-        );
-
-        return false;
-
-    }
-
-    const email = document
-        .getElementById("email")
-        .value
-        .trim();
-
-    if (email) {
-
-        const emailRegex =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(email)) {
-
-            showToast("Invalid Email Address.");
-
-            return false;
-
-        }
-
-    }
-
-    switch (DOM.category.value) {
-
-        case "Mobiles":
-
-            if (!DOM.brand.value) {
-
-                showToast("Please select Brand.");
-
-                return false;
-
-            }
-
-            if (
-                DOM.brand.value === "Other" &&
-                !DOM.otherBrand.value.trim()
-            ) {
-
-                showToast("Enter Brand Name.");
-
-                return false;
-
-            }
-
-            if (
-                !document
-                    .getElementById("model")
-                    .value
-                    .trim()
-            ) {
-
-                showToast("Enter Model.");
-
-                return false;
-
-            }
-
-            break;
-
-        case "Repair":
-
-            if (
-                !document
-                    .getElementById("repairBrand")
-                    .value
-                    .trim()
-            ) {
-
-                showToast("Enter Device Brand.");
-
-                return false;
-
-            }
-
-            if (
-                !document
-                    .getElementById("repairIssue")
-                    .value
-                    .trim()
-            ) {
-
-                showToast("Describe the issue.");
-
-                return false;
-
-            }
-
-            break;
-
-    }
-
-    return true;
-
-}
-
-/* ======================================================
-   DEVICE
-====================================================== */
-
-function getDevice() {
-
-    const ua = navigator.userAgent;
-
-    if (/Android/i.test(ua)) return "Android";
-
-    if (/iPhone|iPad|iPod/i.test(ua)) return "iPhone";
-
-    if (/Windows/i.test(ua)) return "Windows";
-
-    if (/Mac/i.test(ua)) return "Mac";
-
-    return "Unknown";
-
-}
-
-/* ======================================================
-   BROWSER
-====================================================== */
-
-function getBrowser() {
-
-    const ua = navigator.userAgent;
-
-    if (ua.includes("Edg"))
-        return "Edge";
-
-    if (ua.includes("Chrome"))
-        return "Chrome";
-
-    if (ua.includes("Firefox"))
-        return "Firefox";
-
-    if (
-        ua.includes("Safari") &&
-        !ua.includes("Chrome")
-    )
-        return "Safari";
-
-    return "Unknown";
-
-}
-
-/* ======================================================
-   COLLECT DATA
-====================================================== */
-
-function collectData() {
-
-    const selectedBrand =
-        DOM.brand.value === "Other"
-            ? DOM.otherBrand.value.trim()
-            : DOM.brand.value;
-
-    return {
-
-        category:
-            DOM.category.value,
-
-        customerName:
-            document
-                .getElementById("customerName")
-                .value
-                .trim(),
-
-        phone:
-            document
-                .getElementById("phone")
-                .value
-                .trim(),
-
-        whatsapp:
-            document
-                .getElementById("whatsapp")
-                .value
-                .trim(),
-
-        email:
-            document
-                .getElementById("email")
-                .value
-                .trim(),
-
-        brand:
-            selectedBrand,
-
-        model:
-            document
-                .getElementById("model")
-                ?.value
-                .trim() || "",
-
-        ram:
-            document
-                .getElementById("ram")
-                ?.value || "",
-
-        storage:
-            document
-                .getElementById("storage")
-                ?.value || "",
-
-        color:
-
-            document
-                .getElementById("mobileColor")
-                ?.value ||
-
-            document
-                .getElementById("clothColor")
-                ?.value ||
-
-            "",
-
-        size:
-            document
-                .getElementById("size")
-                ?.value || "",
-
-        gender:
-            document
-                .getElementById("gender")
-                ?.value || "",
-
-        repairBrand:
-            document
-                .getElementById("repairBrand")
-                ?.value || "",
-
-        repairModel:
-            document
-                .getElementById("repairModel")
-                ?.value || "",
-
-        issue:
-            document
-                .getElementById("repairIssue")
-                ?.value || "",
-
-        notes:
-            document
-                .getElementById("notes")
-                .value
-                .trim(),
-
-        device:
-            getDevice(),
-
-        browser:
-            getBrowser(),
-
-        source:
-            CONFIG.SOURCE.NAME
-
-    };
-
-}
-/* ======================================================
-   LOADING
-====================================================== */
-
-function showLoading() {
-
-    DOM.loading.classList.remove("hidden");
-
-    DOM.submit.disabled = true;
-
-}
-
-function hideLoading() {
-
-    DOM.loading.classList.add("hidden");
-
-    DOM.submit.disabled = false;
-
-}
-
-/* ======================================================
-   API REQUEST
-====================================================== */
-
-async function postLead(payload) {
-
-    let lastError = null;
-
-    for (let attempt = 0; attempt <= CONFIG.RETRY_COUNT; attempt++) {
+    get(key, fallback = null) {
 
         try {
 
-            const controller = new AbortController();
+            const value = localStorage.getItem(key);
 
-            const timeout = setTimeout(() => {
-
-                controller.abort();
-
-            }, CONFIG.REQUEST_TIMEOUT);
-
-            const response = await fetch(
-
-                CONFIG.API_URL,
-
-                {
-
-                    method: "POST",
-
-                    headers: {
-
-                        "Content-Type": "application/json"
-
-                    },
-
-                    body: JSON.stringify(payload),
-
-                    signal: controller.signal
-
-                }
-
-            );
-
-            clearTimeout(timeout);
-
-            const result = await response.json();
-
-            if (!result.success) {
-
-                throw new Error(
-
-                    result.message ||
-
-                    "Unknown Server Error."
-
-                );
-
-            }
-
-            return result;
+            return value ? JSON.parse(value) : fallback;
 
         } catch (error) {
 
-            lastError = error;
+            console.error(error);
 
-            if (attempt < CONFIG.RETRY_COUNT) {
-
-                await new Promise(resolve =>
-
-                    setTimeout(
-
-                        resolve,
-
-                        CONFIG.RETRY_DELAY
-
-                    )
-
-                );
-
-            }
+            return fallback;
 
         }
 
-    }
+    },
 
-    throw lastError;
+    set(key, value) {
 
-}
+        try {
 
-/* ======================================================
-   SUBMIT
-====================================================== */
+            localStorage.setItem(
+                key,
+                JSON.stringify(value)
+            );
 
-async function submitLead(event) {
+        } catch (error) {
 
-    event.preventDefault();
-
-    if (STATE.submitting)
-
-        return;
-
-    if (!STATE.online) {
-
-        showToast(
-
-            "No Internet Connection."
-
-        );
-
-        return;
-
-    }
-
-    if (!validateForm())
-
-        return;
-
-    STATE.submitting = true;
-
-    showLoading();
-
-    try {
-
-        const payload = collectData();
-
-        const response =
-
-            await postLead(payload);
-
-        hideLoading();
-
-        DOM.leadNumber.textContent =
-
-            response.leadId;
-
-        DOM.success.classList.remove(
-
-            "hidden"
-
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        hideLoading();
-
-        showToast(
-
-            error.message ||
-
-            "Unable to submit."
-
-        );
-
-    }
-
-    finally {
-
-        STATE.submitting = false;
-
-    }
-
-}
-/* ======================================================
-   SUCCESS
-====================================================== */
-
-function showSuccess(leadId) {
-
-    DOM.leadNumber.textContent = leadId;
-
-    DOM.success.classList.remove("hidden");
-
-}
-
-function hideSuccess() {
-
-    DOM.success.classList.add("hidden");
-
-}
-
-/* ======================================================
-   RESET
-====================================================== */
-
-function resetForm() {
-
-    hideSuccess();
-
-    DOM.form.reset();
-
-    DOM.mobileSection.classList.add("hidden");
-
-    DOM.clothingSection.classList.add("hidden");
-
-    DOM.repairSection.classList.add("hidden");
-
-    DOM.otherBrandContainer.classList.add("hidden");
-
-    DOM.otherBrand.required = false;
-
-    DOM.category.focus();
-
-}
-
-/* ======================================================
-   WINDOW EVENTS
-====================================================== */
-
-window.addEventListener(
-
-    "beforeunload",
-
-    function(){
-
-        if(STATE.submitting){
-
-            return "Lead submission is in progress.";
+            console.error(error);
 
         }
 
+    },
+
+    remove(key) {
+
+        localStorage.removeItem(key);
+
+    },
+
+    clear() {
+
+        localStorage.clear();
+
     }
 
-);
+};
 
-/* ======================================================
-   APP VERSION
-====================================================== */
+/* ==========================================================
+   Toast
+========================================================== */
 
-console.log(
+const Toast = {
 
-    CONFIG.APP_NAME,
+    show(message, type = 'success') {
 
-    CONFIG.APP_VERSION,
+        if (!UI.toastContainer) return;
 
-    "Loaded Successfully"
+        const toast = document.createElement('div');
 
-);
+        toast.className = `toast ${type}`;
+
+        toast.textContent = message;
+
+        UI.toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        }, CONFIG.UI.TOAST_DURATION);
+
+    }
+
+};
+
+/* ==========================================================
+   Utilities
+========================================================== */
+
+const Utils = {
+
+    generateLeadId() {
+
+        return 'FM-' + Date.now();
+
+    },
+
+    formatDate(date = new Date()) {
+
+        return date.toLocaleDateString('en-IN');
+
+    },
+
+    formatTime(date = new Date()) {
+
+        return date.toLocaleTimeString('en-IN', {
+
+            hour: '2-digit',
+
+            minute: '2-digit'
+
+        });
+
+    },
+
+    getTimestamp() {
+
+        return new Date().toISOString();
+
+    },
+
+    isEmpty(value) {
+
+        return value === null ||
+
+               value === undefined ||
+
+               value === '';
+
+    },
+
+    trim(value) {
+
+        return String(value).trim();
+
+    }
+
+};
