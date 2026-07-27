@@ -23,6 +23,12 @@ const Router = {
 
         },
 
+        buy() {
+
+            Buy.render();
+
+        },
+
         menswear() {
 
             MensWear.render();

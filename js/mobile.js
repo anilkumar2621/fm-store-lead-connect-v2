@@ -31,7 +31,7 @@ const Mobile = {
 
         <button
             class="card"
-            onclick="alert('Buy Mobile - Coming Next')"
+            onclick="Router.go('buy')"
         >
 
             <div class="card-icon">
@@ -56,7 +56,7 @@ const Mobile = {
 
         <button
             class="card"
-            onclick="alert('Sell Mobile - Coming Next')"
+            onclick="alert('Sell Mobile - Coming Soon')"
         >
 
             <div class="card-icon">
@@ -81,7 +81,7 @@ const Mobile = {
 
         <button
             class="card"
-            onclick="alert('Exchange Mobile - Coming Next')"
+            onclick="alert('Exchange Mobile - Coming Soon')"
         >
 
             <div class="card-icon">
@@ -98,7 +98,7 @@ const Mobile = {
 
             <p>
 
-                Trade Your Mobile
+                Trade Your Existing Mobile
 
             </p>
 
