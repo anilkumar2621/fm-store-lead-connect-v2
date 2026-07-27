@@ -45,15 +45,127 @@ const Home = {
 
             <p>
 
-                Premium Pre-Owned Mobiles,
-                Men's Fashion &
-                Professional Mobile Repairs
+                Premium Pre-Owned Mobiles • Men's Fashion • Mobile Repairs
 
             </p>
 
         </div>
 
     </header>
+
+    <!-- ==========================================
+         Services
+    =========================================== -->
+
+    <section class="home-section">
+
+        <h2 class="section-title">
+
+            Our Services
+
+        </h2>
+
+        <div class="card-grid">
+
+            <button
+                class="card"
+                onclick="Router.go('mobile')"
+            >
+
+                <div class="card-icon">
+
+                    <img
+                        src="assets/icons/mobile.png"
+                        alt="Mobile Enquiry"
+                    >
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        Mobile Enquiry
+
+                    </h3>
+
+                    <p>
+
+                        Buy & Sell Smartphones
+
+                    </p>
+
+                </div>
+
+            </button>
+
+            <button
+                class="card"
+                onclick="Router.go('menswear')"
+            >
+
+                <div class="card-icon">
+
+                    <img
+                        src="assets/icons/menswear.png"
+                        alt="Men's Wear"
+                    >
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        Men's Wear
+
+                    </h3>
+
+                    <p>
+
+                        Premium Fashion Collection
+
+                    </p>
+
+                </div>
+
+            </button>
+
+            <button
+                class="card"
+                onclick="Router.go('repair')"
+            >
+
+                <div class="card-icon">
+
+                    <img
+                        src="assets/icons/repair.png"
+                        alt="Mobile Repair"
+                    >
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        Mobile Repair
+
+                    </h3>
+
+                    <p>
+
+                        Professional Repair & Service
+
+                    </p>
+
+                </div>
+
+            </button>
+
+        </div>
+
+    </section>
 
     <!-- ==========================================
          Store Locations
@@ -63,7 +175,13 @@ const Home = {
 
         <h2 class="section-title">
 
-            📍 Our Stores
+            <img
+                src="assets/icons/location.png"
+                width="22"
+                alt="Location"
+            >
+
+            Our Stores
 
         </h2>
 
@@ -122,8 +240,7 @@ const Home = {
         </div>
 
     </section>
-
-    <!-- ==========================================
+        <!-- ==========================================
          Quick Actions
     =========================================== -->
 
@@ -142,7 +259,11 @@ const Home = {
                 onclick="window.location.href='tel:+918463949455'"
             >
 
-                📞
+                <img
+                    src="assets/icons/call.png"
+                    width="28"
+                    alt="Call"
+                >
 
                 <span>
 
@@ -157,105 +278,17 @@ const Home = {
                 onclick="window.open('https://wa.me/918463949455','_blank')"
             >
 
-                💬
+                <img
+                    src="assets/icons/whatsapp.png"
+                    width="28"
+                    alt="WhatsApp"
+                >
 
                 <span>
 
                     WhatsApp
 
                 </span>
-
-            </button>
-
-        </div>
-
-    </section>
-        <!-- ==========================================
-         Services
-    =========================================== -->
-
-    <section class="home-section">
-
-        <h2 class="section-title">
-
-            Our Services
-
-        </h2>
-
-        <div class="card-grid">
-
-            <button
-                class="card"
-                onclick="Router.go('mobile')"
-            >
-
-                <div class="card-icon">
-
-                    📱
-
-                </div>
-
-                <h3>
-
-                    Mobile Enquiry
-
-                </h3>
-
-                <p>
-
-                    Buy & Sell Smartphones
-
-                </p>
-
-            </button>
-
-            <button
-                class="card"
-                onclick="Router.go('menswear')"
-            >
-
-                <div class="card-icon">
-
-                    👕
-
-                </div>
-
-                <h3>
-
-                    Men's Wear
-
-                </h3>
-
-                <p>
-
-                    Premium Fashion Collection
-
-                </p>
-
-            </button>
-
-            <button
-                class="card"
-                onclick="Router.go('repair')"
-            >
-
-                <div class="card-icon">
-
-                    🔧
-
-                </div>
-
-                <h3>
-
-                    Mobile Repair
-
-                </h3>
-
-                <p>
-
-                    Professional Repair Services
-
-                </p>
 
             </button>
 
@@ -277,7 +310,7 @@ const Home = {
 
         <strong>
 
-            Every Day • 9:00 AM – 9:00 PM
+            Every Day • 10:00 AM – 10:00 PM
 
         </strong>
 
