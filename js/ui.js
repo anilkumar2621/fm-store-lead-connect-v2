@@ -81,6 +81,52 @@ const UI = {
 
     },
 
+    page({
+
+        title,
+        subtitle,
+        back,
+        content
+
+    }) {
+
+        this.render(`
+
+<section class="container fade-in">
+
+    <button
+        class="btn btn-secondary"
+        onclick="Router.go('${back}')"
+    >
+
+        ← Back
+
+    </button>
+
+    <div class="page-header">
+
+        <h1>
+
+            ${title}
+
+        </h1>
+
+        <p>
+
+            ${subtitle}
+
+        </p>
+
+    </div>
+
+    ${content}
+
+</section>
+
+        `);
+
+    },
+
     bindGlobalEvents() {
 
         window.addEventListener('online', () => {

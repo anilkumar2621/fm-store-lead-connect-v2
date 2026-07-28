@@ -22,6 +22,50 @@ const CONFIG = Object.freeze({
     },
 
     /* ======================================================
+       Business
+    ====================================================== */
+
+    BUSINESS: {
+
+        NAME: 'FM STORE-STYLES',
+
+        TAGLINE: 'Premium Mobiles • Fashion • Repairs',
+
+        PHONE: '+91 84639 49455',
+
+        WHATSAPP: '918463949455',
+
+        EMAIL: '',
+
+        BUSINESS_HOURS: '10:00 AM - 10:00 PM',
+
+        STORES: [
+
+            {
+
+                NAME: 'FM STORE-STYLES',
+
+                LOCATION: 'Eturnagaram',
+
+                MAPS: ''
+
+            },
+
+            {
+
+                NAME: 'Fayaz Mobiles',
+
+                LOCATION: 'Eturnagaram',
+
+                MAPS: ''
+
+            }
+
+        ]
+
+    },
+
+    /* ======================================================
        Backend
     ====================================================== */
 
@@ -44,20 +88,6 @@ const CONFIG = Object.freeze({
     },
 
     /* ======================================================
-       Branches
-    ====================================================== */
-
-    BRANCHES: [
-
-        'Eturnagaram',
-
-        'Mulugu',
-
-        'Head Office'
-
-    ],
-
-    /* ======================================================
        Categories
     ====================================================== */
 
@@ -72,46 +102,135 @@ const CONFIG = Object.freeze({
     ],
 
     /* ======================================================
-       Mobile Brands
+       Mobile Configuration
     ====================================================== */
 
-    MOBILE_BRANDS: [
+    MOBILE: {
 
-        'Apple',
+        BRANDS: [
 
-        'Samsung',
+            'Apple',
 
-        'OnePlus',
+            'Samsung',
 
-        'Google',
+            'OnePlus',
 
-        'Motorola',
+            'Google',
 
-        'Nothing',
+            'Motorola',
 
-        'Xiaomi',
+            'Nothing',
 
-        'Redmi',
+            'Xiaomi',
 
-        'POCO',
+            'Redmi',
 
-        'Realme',
+            'POCO',
 
-        'Vivo',
+            'Realme',
 
-        'Oppo',
+            'Vivo',
 
-        'IQOO',
+            'Oppo',
 
-        'Honor',
+            'IQOO',
 
-        'Nokia',
+            'Honor',
 
-        'Other'
+            'Nokia',
 
-    ],
+            'Other'
 
-    /* ======================================================
+        ],
+
+        BUY_TYPES: [
+
+            'New',
+
+            'Pre-Owned'
+
+        ],
+
+        GRADES: [
+
+            'A+',
+
+            'A',
+
+            'B+',
+
+            'B',
+
+            'Any'
+
+        ],
+
+        CONDITIONS: [
+
+            'Like New',
+
+            'Excellent',
+
+            'Good',
+
+            'Average'
+
+        ],
+
+        BUDGETS: [
+
+            'Under ₹10,000',
+
+            '₹10,000 - ₹15,000',
+
+            '₹15,000 - ₹20,000',
+
+            '₹20,000 - ₹30,000',
+
+            '₹30,000 - ₹50,000',
+
+            'Above ₹50,000',
+
+            'Custom Budget'
+
+        ],
+
+        RAM: [
+
+            '2GB',
+
+            '3GB',
+
+            '4GB',
+
+            '6GB',
+
+            '8GB',
+
+            '12GB',
+
+            '16GB'
+
+        ],
+
+        STORAGE: [
+
+            '32GB',
+
+            '64GB',
+
+            '128GB',
+
+            '256GB',
+
+            '512GB',
+
+            '1TB'
+
+        ]
+
+    },
+        /* ======================================================
        Clothing Sizes
     ====================================================== */
 
@@ -183,7 +302,11 @@ const CONFIG = Object.freeze({
 
         CUSTOMER: 'fm_customer',
 
-        DRAFT: 'fm_draft'
+        DRAFT: 'fm_draft',
+
+        MOBILE_DRAFT: 'fm_mobile_draft',
+
+        LAST_ROUTE: 'fm_last_route'
 
     }
 

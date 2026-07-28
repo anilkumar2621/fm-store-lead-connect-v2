@@ -23,9 +23,51 @@ const Router = {
 
         },
 
-        buy() {
+        mobileBuy() {
 
-            Buy.render();
+            MobileBuy.render();
+
+        },
+
+        mobileBuyNew() {
+
+            MobileBuyNew.render();
+
+        },
+
+        mobileBuyPreowned() {
+
+            MobileBuyPreowned.render();
+
+        },
+
+        mobileSell() {
+
+            MobileSell.render();
+
+        },
+
+        mobileExchange() {
+
+            MobileExchange.render();
+
+        },
+
+        mobileReview() {
+
+            MobileReview.render();
+
+        },
+
+        mobileSubmit() {
+
+            MobileSubmit.render();
+
+        },
+
+        mobileSuccess() {
+
+            MobileSuccess.render();
 
         },
 

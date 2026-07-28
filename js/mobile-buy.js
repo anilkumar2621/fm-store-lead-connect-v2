@@ -1,6 +1,6 @@
 'use strict';
 
-const Buy = {
+const MobileBuy = {
 
     render() {
 
@@ -31,7 +31,7 @@ const Buy = {
 
         <button
             class="card"
-            onclick="alert('New Mobile Form - Coming Next')"
+            onclick="Router.go('mobileBuyNew')"
         >
 
             <div class="card-icon">
@@ -56,7 +56,7 @@ const Buy = {
 
         <button
             class="card"
-            onclick="alert('Pre-Owned Mobile Form - Coming Next')"
+            onclick="Router.go('mobileBuyPreowned')"
         >
 
             <div class="card-icon">
