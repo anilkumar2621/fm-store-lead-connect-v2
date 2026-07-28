@@ -76,12 +76,294 @@ Object.assign(UI, {
     },
 
     /* ======================================================
+       Card
+    ====================================================== */
+
+    card({
+
+        title = '',
+
+        body = ''
+
+    }) {
+
+        return `
+
+<div class="fm-card">
+
+    ${title ? `
+
+    <div class="fm-card-header">
+
+        <h2 class="fm-card-title">
+
+            ${title}
+
+        </h2>
+
+    </div>
+
+    ` : ''}
+
+    <div class="fm-card-body">
+
+        ${body}
+
+    </div>
+
+</div>
+
+`;
+
+    },
+
+    /* ======================================================
+       Input
+    ====================================================== */
+
+    input({
+
+        id,
+
+        label,
+
+        placeholder = '',
+
+        type = 'text',
+
+        value = '',
+
+        required = false,
+
+        maxlength = ''
+
+    }) {
+
+        return `
+
+<div class="fm-field">
+
+    <label class="fm-label">
+
+        ${label}
+
+        ${required ? '<span class="required">*</span>' : ''}
+
+    </label>
+
+    <input
+
+        id="${id}"
+
+        class="fm-input"
+
+        type="${type}"
+
+        value="${value}"
+
+        placeholder="${placeholder}"
+
+        ${maxlength ? `maxlength="${maxlength}"` : ''}
+
+    >
+
+</div>
+
+`;
+
+    },
+
+    /* ======================================================
+       Textarea
+    ====================================================== */
+
+    textarea({
+
+        id,
+
+        label,
+
+        placeholder = '',
+
+        rows = 4
+
+    }) {
+
+        return `
+
+<div class="fm-field">
+
+    <label class="fm-label">
+
+        ${label}
+
+    </label>
+
+    <textarea
+
+        id="${id}"
+
+        class="fm-textarea"
+
+        rows="${rows}"
+
+        placeholder="${placeholder}"
+
+    ></textarea>
+
+</div>
+
+`;
+
+    },
+
+    /* ======================================================
+       Button
+    ====================================================== */
+
+    button({
+
+        text,
+
+        onclick = '',
+
+        type = 'primary'
+
+    }) {
+
+        return `
+
+<button
+
+    type="button"
+
+    class="btn btn-${type}"
+
+    onclick="${onclick}"
+
+>
+
+    ${text}
+
+</button>
+
+`;
+
+    },
+
+    /* ======================================================
+       Apple Stepper
+    ====================================================== */
+
+    stepper({
+
+        id,
+
+        label,
+
+        value = 1,
+
+        min = 1,
+
+        max = 10
+
+    }) {
+
+        return `
+
+<div class="fm-field">
+
+    <label class="fm-label">
+
+        ${label}
+
+    </label>
+
+    <div class="fm-stepper">
+
+        <button
+
+            type="button"
+
+            class="fm-stepper-btn"
+
+            onclick="UI.stepperChange('${id}',-1,${min},${max})"
+
+        >
+
+            −
+
+        </button>
+
+        <span
+
+            id="${id}"
+
+            class="fm-stepper-value"
+
+            data-value="${value}"
+
+        >
+
+            ${value}
+
+        </span>
+
+        <button
+
+            type="button"
+
+            class="fm-stepper-btn"
+
+            onclick="UI.stepperChange('${id}',1,${min},${max})"
+
+        >
+
+            +
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+    },
+
+    /* ======================================================
+       Stepper Change
+    ====================================================== */
+
+    stepperChange(id, change, min, max) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        let value = Number(element.dataset.value || 1);
+
+        value += change;
+
+        if (value < min) value = min;
+
+        if (value > max) value = max;
+
+        element.dataset.value = value;
+
+        element.textContent = value;
+
+    },
+
+    /* ======================================================
        Open Bottom Sheet
     ====================================================== */
 
     openBottomSheet(id, title) {
 
         const options = window.FM_SELECTS[id] || [];
+
+        document.body.style.overflow = 'hidden';
 
         this.bottomSheetRoot.innerHTML = `
 
@@ -179,10 +461,94 @@ Object.assign(UI, {
 
     closeBottomSheet() {
 
+        document.body.style.overflow = '';
+
         if (!this.bottomSheetRoot) return;
 
         this.bottomSheetRoot.innerHTML = '';
 
     }
+
+,
+
+/* ======================================================
+   Section
+====================================================== */
+
+section({
+
+    id,
+
+    hidden = false,
+
+    body = ''
+
+}) {
+
+    return `
+
+<div
+
+    id="${id}"
+
+    class="fm-section"
+
+    ${hidden ? 'style="display:none;"' : ''}
+
+>
+
+    ${body}
+
+</div>
+
+`;
+
+},
+
+/* ======================================================
+   Show Section
+====================================================== */
+
+show(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.style.display = '';
+
+},
+
+/* ======================================================
+   Hide Section
+====================================================== */
+
+hide(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.style.display = 'none';
+
+},
+
+/* ======================================================
+   Toggle Section
+====================================================== */
+
+toggle(id, show) {
+
+    if (show) {
+
+        this.show(id);
+
+    } else {
+
+        this.hide(id);
+
+    }
+
+}
 
 });

@@ -1,6 +1,6 @@
 /* ==========================================================
    FM STORE-STYLES
-   New Mobile Enquiry
+   New Mobile
 ========================================================== */
 
 'use strict';
@@ -11,7 +11,7 @@ const MobileBuyNew = {
 
         UI.page({
 
-            title: '🆕 New Mobile',
+            title: 'New Mobile',
 
             subtitle: 'Tell us what mobile you are looking for.',
 
@@ -19,312 +19,391 @@ const MobileBuyNew = {
 
             content: `
 
-<div class="fm-card">
+${UI.card({
 
-    <h3 class="fm-card-title">
+    title:'Mobile Requirements',
 
-        📱 Mobile Details
+    body:`
 
-    </h3>
+${UI.select({
 
-    ${UI.select({
+    id:'brand',
 
-        id: 'brand',
+    label:'Brand',
 
-        label: 'Brand',
+    placeholder:'Select Brand',
 
-        placeholder: 'Select Brand',
+    options:CONFIG.MOBILE.BRANDS,
 
-        options: CONFIG.MOBILE.BRANDS,
+    required:true
 
-        required: true
+})}
 
-    })}
+${UI.section({
 
-    <div
-        id="otherBrandContainer"
-        style="display:none;"
-    >
+    id:'otherBrandSection',
 
-        <div class="fm-field">
+    hidden:true,
 
-            <label class="fm-label">
+    body:`
 
-                Other Brand
+${UI.input({
 
-            </label>
+    id:'otherBrand',
 
-            <input
+    label:'Other Brand',
 
-                id="otherBrand"
+    placeholder:'Enter Brand Name',
 
-                class="fm-input"
+    required:true
 
-                type="text"
+})}
 
-                placeholder="Enter Brand Name"
+`
 
-            >
+})}
 
-        </div>
+${UI.input({
 
-    </div>
+    id:'model',
 
-    <div class="fm-field">
+    label:'Model',
 
-        <label class="fm-label">
+    placeholder:'Example: iPhone 17 Pro Max'
 
-            Model
+})}
 
-        </label>
+${UI.select({
 
-        <input
+    id:'ram',
 
-            id="model"
+    label:'RAM',
 
-            class="fm-input"
+    placeholder:'Select RAM',
 
-            type="text"
+    options:[
 
-            placeholder="Example : iPhone 16"
+        'Not Sure',
 
-        >
+        ...CONFIG.MOBILE.RAM
 
-    </div>
+    ]
 
-    ${UI.select({
+})}
 
-        id: 'ram',
+${UI.select({
 
-        label: 'RAM',
+    id:'storage',
 
-        placeholder: 'Select RAM',
+    label:'Storage / ROM',
 
-        options: CONFIG.MOBILE.RAM
+    placeholder:'Select Storage',
 
-    })}
+    options:[
 
-    ${UI.select({
+        'Not Sure',
 
-        id: 'storage',
+        ...CONFIG.MOBILE.STORAGE
 
-        label: 'Storage / ROM',
+    ]
 
-        placeholder: 'Select Storage',
+})}
 
-        options: CONFIG.MOBILE.STORAGE
+${UI.input({
 
-    })}
+    id:'colour',
 
-    ${UI.select({
+    label:'Preferred Colour',
 
-        id: 'budget',
+    placeholder:'Example: Black'
 
-        label: 'Budget',
+})}
 
-        placeholder: 'Select Budget',
+${UI.stepper({
 
-        options: CONFIG.MOBILE.BUDGETS,
+    id:'quantity',
 
-        required: true
+    label:'Quantity',
 
-    })}
+    value:1,
 
-    <div class="fm-field">
+    min:1,
 
-        <label class="fm-label">
+    max:10
 
-            Preferred Colour
+})}
 
-        </label>
+${UI.textarea({
 
-        <input
+    id:'requirements',
 
-            id="colour"
+    label:'Additional Requirements',
 
-            class="fm-input"
+    placeholder:'Mention any specific requirement...'
 
-            type="text"
+})}
 
-            placeholder="Example : Black"
+`
 
-        >
+})}
 
-    </div>
+${UI.card({
 
-    <div class="fm-field">
+    title:'Your Details',
 
-        <label class="fm-label">
+    body:`
 
-            Quantity
+${UI.input({
 
-        </label>
+    id:'customerName',
 
-        <input
+    label:'Full Name',
 
-            id="quantity"
+    placeholder:'Enter Full Name',
 
-            class="fm-input"
+    required:true
 
-            type="number"
+})}
 
-            min="1"
+${UI.input({
 
-            max="10"
+    id:'customerPhone',
 
-            value="1"
+    label:'Mobile Number',
 
-        >
+    placeholder:'10 Digit Mobile Number',
 
-    </div>
+    type:'tel',
 
-    <div class="fm-field">
+    maxlength:10,
 
-        <label class="fm-label">
+    required:true
 
-            Additional Requirements
+})}
 
-        </label>
+${UI.section({
 
-        <textarea
+    id:'whatsappSection',
 
-            id="requirements"
+    body:`
 
-            class="fm-textarea"
+${UI.input({
 
-            rows="4"
+    id:'customerWhatsapp',
 
-            placeholder="Any specific requirement..."
+    label:'WhatsApp Number',
 
-        ></textarea>
+    placeholder:'WhatsApp Number',
 
-    </div>
+    type:'tel',
 
-</div>
+    maxlength:10
 
-<div class="fm-card">
+})}
 
-    <h3 class="fm-card-title">
+`
 
-        👤 Customer Details
+})}
 
-    </h3>
+${UI.select({
 
-    <div class="fm-field">
+    id:'contactMethod',
 
-        <label class="fm-label">
+    label:'Preferred Contact',
 
-            Full Name *
+    placeholder:'Select Contact Method',
 
-        </label>
+    options:[
 
-        <input
+        'WhatsApp',
 
-            id="customerName"
+        'Call',
 
-            class="fm-input"
+        'Either'
 
-            type="text"
+    ]
 
-            placeholder="Enter Full Name"
+})}
 
-        >
+`
 
-    </div>
+})}
 
-    <div class="fm-field">
+${UI.button({
 
-        <label class="fm-label">
+    text:'Submit Enquiry',
 
-            Mobile Number *
+    onclick:'MobileBuyNew.submit()'
 
-        </label>
-
-        <input
-
-            id="customerPhone"
-
-            class="fm-input"
-
-            type="tel"
-
-            placeholder="10 Digit Mobile Number"
-
-        >
-
-    </div>
-
-    <div class="fm-field">
-
-        <label class="fm-label">
-
-            WhatsApp Number
-
-        </label>
-
-        <input
-
-            id="customerWhatsapp"
-
-            class="fm-input"
-
-            type="tel"
-
-            placeholder="WhatsApp Number"
-
-        >
-
-    </div>
-
-    ${UI.select({
-
-        id:'store',
-
-        label:'Preferred Store',
-
-        placeholder:'Choose Store',
-
-        options: CONFIG.BUSINESS.STORES.map(store => store.NAME)
-
-    })}
-
-    ${UI.select({
-
-        id:'contact',
-
-        label:'Preferred Contact',
-
-        placeholder:'Choose Contact Method',
-
-        options:[
-
-            'WhatsApp',
-
-            'Call',
-
-            'Either'
-
-        ]
-
-    })}
-
-</div>
-
-<button
-
-    class="btn btn-primary"
-
-    onclick="alert('Next Step : Google Sheets Submission')"
-
->
-
-    Submit Enquiry
-
-</button>
+})}
 
 `
 
         });
+
+        MobileBuyNew.init();
+
+    },
+
+    /* ======================================================
+       Initialize
+    ====================================================== */
+
+    init() {
+
+        const brand = document.getElementById('brand');
+
+        if (brand) {
+
+            brand.addEventListener('change', (e) => {
+
+                this.handleBrandChange(e.detail);
+
+            });
+
+        }
+
+    },
+
+    /* ======================================================
+       Brand Change
+    ====================================================== */
+
+    handleBrandChange(value) {
+
+        if (value === 'Other') {
+
+            UI.show('otherBrandSection');
+
+        } else {
+
+            UI.hide('otherBrandSection');
+
+        }
+
+    },
+
+    /* ======================================================
+       Get Field Value
+    ====================================================== */
+
+    getValue(id) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return '';
+
+        if (element.classList.contains('fm-select')) {
+
+            return element.dataset.value || '';
+
+        }
+
+        if (element.classList.contains('fm-stepper-value')) {
+
+            return element.dataset.value || '1';
+
+        }
+
+        return element.value.trim();
+
+    },
+
+    /* ======================================================
+       Validate
+    ====================================================== */
+
+    validate() {
+
+        if (!this.getValue('brand')) {
+
+            UI.toast('Please select a Brand', 'warning');
+
+            return false;
+
+        }
+
+        if (
+
+            this.getValue('brand') === 'Other' &&
+
+            !this.getValue('otherBrand')
+
+        ) {
+
+            UI.toast('Please enter Brand Name', 'warning');
+
+            return false;
+
+        }
+
+        if (!this.getValue('customerName')) {
+
+            UI.toast('Please enter Full Name', 'warning');
+
+            return false;
+
+        }
+
+        const phone = this.getValue('customerPhone');
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            UI.toast('Enter a valid 10 digit Mobile Number', 'warning');
+
+            return false;
+
+        }
+
+        return true;
+
+    },
+
+    /* ======================================================
+       Submit
+    ====================================================== */
+
+    submit() {
+
+        if (!this.validate()) {
+
+            return;
+
+        }
+
+        const enquiry = {
+
+            enquiryType: 'New Mobile',
+
+            brand: this.getValue('brand'),
+
+            otherBrand: this.getValue('otherBrand'),
+
+            model: this.getValue('model'),
+
+            ram: this.getValue('ram'),
+
+            storage: this.getValue('storage'),
+
+            colour: this.getValue('colour'),
+
+            quantity: this.getValue('quantity'),
+
+            requirements: this.getValue('requirements'),
+
+            customerName: this.getValue('customerName'),
+
+            customerPhone: this.getValue('customerPhone'),
+
+            customerWhatsapp: this.getValue('customerWhatsapp'),
+
+            contactMethod: this.getValue('contactMethod')
+
+        };
+
+        console.log(enquiry);
+
+        UI.toast('Ready for Google Sheets Integration');
 
     }
 
