@@ -289,7 +289,7 @@ ${UI.button({
             });
 
         }
-        
+
         this.toggleWhatsapp();
 
     },
@@ -359,6 +359,24 @@ toggleWhatsapp() {
         return element.value.trim();
 
     },
+
+    /* ======================================================
+   Get WhatsApp Number
+====================================================== */
+
+getWhatsappNumber() {
+
+    const checkbox = document.getElementById('sameWhatsapp');
+
+    if (checkbox && checkbox.checked) {
+
+        return this.getValue('customerPhone');
+
+    }
+
+    return this.getValue('customerWhatsapp');
+
+},
 
     /* ======================================================
        Validate
@@ -446,7 +464,7 @@ toggleWhatsapp() {
 
             customerPhone: this.getValue('customerPhone'),
 
-            customerWhatsapp: this.getValue('customerWhatsapp'),
+            customerWhatsapp: this.getWhatsappNumber(),
 
             contactMethod: this.getValue('contactMethod')
 
