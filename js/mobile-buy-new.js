@@ -180,10 +180,37 @@ ${UI.input({
     required:true
 
 })}
+<div class="fm-field">
+
+    <label class="fm-checkbox">
+
+        <input
+
+            type="checkbox"
+
+            id="sameWhatsapp"
+
+            checked
+
+            onchange="MobileBuyNew.toggleWhatsapp()"
+
+        >
+
+        <span>
+
+            WhatsApp number is same as Mobile
+
+        </span>
+
+    </label>
+
+</div>
 
 ${UI.section({
 
     id:'whatsappSection',
+
+    hidden:true,
 
     body:`
 
