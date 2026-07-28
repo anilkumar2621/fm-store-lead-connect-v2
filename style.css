@@ -2126,3 +2126,296 @@ body{
     }
 
 }
+/* ==========================================================
+   FM UI Kit
+   Apple Select
+========================================================== */
+
+.fm-field{
+    margin-bottom:24px;
+}
+
+.fm-label{
+    display:block;
+    margin-bottom:10px;
+    font-size:15px;
+    font-weight:600;
+    color:#111;
+}
+
+.required{
+    color:#ff3b30;
+}
+
+.fm-select{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    font-size:16px;
+
+}
+
+.fm-select:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.fm-select:active{
+
+    transform:scale(.98);
+
+}
+
+.fm-select-text{
+
+    color:#111;
+
+}
+
+.fm-select-arrow{
+
+    font-size:18px;
+
+    color:#666;
+
+}
+
+.fm-sheet-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(8px);
+
+    z-index:9998;
+
+}
+
+.fm-bottom-sheet{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:#fff;
+
+    border-radius:28px 28px 0 0;
+
+    padding:24px;
+
+    max-height:70vh;
+
+    overflow:auto;
+
+    z-index:9999;
+
+    animation:sheetUp .25s ease;
+
+    box-shadow:
+        0 -10px 40px rgba(0,0,0,.15);
+
+}
+
+@keyframes sheetUp{
+
+    from{
+
+        transform:translateY(100%);
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.fm-sheet-header{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.fm-sheet-option{
+
+    width:100%;
+
+    border:none;
+
+    background:#fff;
+
+    padding:16px;
+
+    text-align:left;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    margin-bottom:8px;
+
+}
+
+.fm-sheet-option:hover{
+
+    background:#f5f5f7;
+
+}
+
+.fm-sheet-cancel{
+
+    width:100%;
+
+    margin-top:12px;
+
+    border:none;
+
+    background:#111;
+
+    color:#fff;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+/* ==========================================================
+   FM Form Components
+========================================================== */
+
+.fm-card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    margin-bottom:24px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.fm-card-title{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:24px;
+
+    color:#111;
+
+}
+
+.fm-input{
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.25s;
+
+    box-sizing:border-box;
+
+}
+
+.fm-input:focus{
+
+    box-shadow:0 0 0 3px rgba(123,63,228,.18);
+
+}
+
+.fm-textarea{
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+    resize:vertical;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.25s;
+
+    box-sizing:border-box;
+
+    min-height:120px;
+
+}
+
+.fm-textarea:focus{
+
+    box-shadow:0 0 0 3px rgba(123,63,228,.18);
+
+}

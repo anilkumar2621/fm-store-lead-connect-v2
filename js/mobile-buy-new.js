@@ -1,3 +1,8 @@
+/* ==========================================================
+   FM STORE-STYLES
+   New Mobile Enquiry
+========================================================== */
+
 'use strict';
 
 const MobileBuyNew = {
@@ -8,92 +13,314 @@ const MobileBuyNew = {
 
             title: '🆕 New Mobile',
 
-            subtitle: 'Tell us what new mobile you are looking for.',
+            subtitle: 'Tell us what mobile you are looking for.',
 
             back: 'mobileBuy',
 
             content: `
 
-<form class="form">
+<div class="fm-card">
 
-    <div class="form-group">
+    <h3 class="fm-card-title">
 
-        <label>
+        📱 Mobile Details
 
-            Brand *
+    </h3>
 
-        </label>
+    ${UI.select({
 
-        <select>
+        id: 'brand',
 
-            <option value="">
+        label: 'Brand',
 
-                Select Brand
+        placeholder: 'Select Brand',
 
-            </option>
+        options: CONFIG.MOBILE.BRANDS,
 
-            ${CONFIG.MOBILE.BRANDS.map(brand => `
-                <option value="${brand}">
-                    ${brand}
-                </option>
-            `).join('')}
+        required: true
 
-        </select>
+    })}
+
+    <div
+        id="otherBrandContainer"
+        style="display:none;"
+    >
+
+        <div class="fm-field">
+
+            <label class="fm-label">
+
+                Other Brand
+
+            </label>
+
+            <input
+
+                id="otherBrand"
+
+                class="fm-input"
+
+                type="text"
+
+                placeholder="Enter Brand Name"
+
+            >
+
+        </div>
 
     </div>
 
-    <div class="form-group">
+    <div class="fm-field">
 
-        <label>
+        <label class="fm-label">
 
-            Model (Optional)
+            Model
 
         </label>
 
         <input
+
+            id="model"
+
+            class="fm-input"
+
             type="text"
-            placeholder="Example: Galaxy S25"
+
+            placeholder="Example : iPhone 16"
+
         >
 
     </div>
 
-    <div class="form-group">
+    ${UI.select({
 
-        <label>
+        id: 'ram',
 
-            Budget *
+        label: 'RAM',
+
+        placeholder: 'Select RAM',
+
+        options: CONFIG.MOBILE.RAM
+
+    })}
+
+    ${UI.select({
+
+        id: 'storage',
+
+        label: 'Storage / ROM',
+
+        placeholder: 'Select Storage',
+
+        options: CONFIG.MOBILE.STORAGE
+
+    })}
+
+    ${UI.select({
+
+        id: 'budget',
+
+        label: 'Budget',
+
+        placeholder: 'Select Budget',
+
+        options: CONFIG.MOBILE.BUDGETS,
+
+        required: true
+
+    })}
+
+    <div class="fm-field">
+
+        <label class="fm-label">
+
+            Preferred Colour
 
         </label>
 
-        <select>
+        <input
 
-            <option value="">
+            id="colour"
 
-                Select Budget
+            class="fm-input"
 
-            </option>
+            type="text"
 
-            ${CONFIG.MOBILE.BUDGETS.map(budget => `
-                <option value="${budget}">
-                    ${budget}
-                </option>
-            `).join('')}
+            placeholder="Example : Black"
 
-        </select>
+        >
 
     </div>
 
-    <button
-        type="button"
-        class="btn btn-primary"
-        onclick="alert('Customer Details - Next Module')"
-    >
+    <div class="fm-field">
 
-        Next →
+        <label class="fm-label">
 
-    </button>
+            Quantity
 
-</form>
+        </label>
+
+        <input
+
+            id="quantity"
+
+            class="fm-input"
+
+            type="number"
+
+            min="1"
+
+            max="10"
+
+            value="1"
+
+        >
+
+    </div>
+
+    <div class="fm-field">
+
+        <label class="fm-label">
+
+            Additional Requirements
+
+        </label>
+
+        <textarea
+
+            id="requirements"
+
+            class="fm-textarea"
+
+            rows="4"
+
+            placeholder="Any specific requirement..."
+
+        ></textarea>
+
+    </div>
+
+</div>
+
+<div class="fm-card">
+
+    <h3 class="fm-card-title">
+
+        👤 Customer Details
+
+    </h3>
+
+    <div class="fm-field">
+
+        <label class="fm-label">
+
+            Full Name *
+
+        </label>
+
+        <input
+
+            id="customerName"
+
+            class="fm-input"
+
+            type="text"
+
+            placeholder="Enter Full Name"
+
+        >
+
+    </div>
+
+    <div class="fm-field">
+
+        <label class="fm-label">
+
+            Mobile Number *
+
+        </label>
+
+        <input
+
+            id="customerPhone"
+
+            class="fm-input"
+
+            type="tel"
+
+            placeholder="10 Digit Mobile Number"
+
+        >
+
+    </div>
+
+    <div class="fm-field">
+
+        <label class="fm-label">
+
+            WhatsApp Number
+
+        </label>
+
+        <input
+
+            id="customerWhatsapp"
+
+            class="fm-input"
+
+            type="tel"
+
+            placeholder="WhatsApp Number"
+
+        >
+
+    </div>
+
+    ${UI.select({
+
+        id:'store',
+
+        label:'Preferred Store',
+
+        placeholder:'Choose Store',
+
+        options: CONFIG.BUSINESS.STORES.map(store => store.NAME)
+
+    })}
+
+    ${UI.select({
+
+        id:'contact',
+
+        label:'Preferred Contact',
+
+        placeholder:'Choose Contact Method',
+
+        options:[
+
+            'WhatsApp',
+
+            'Call',
+
+            'Either'
+
+        ]
+
+    })}
+
+</div>
+
+<button
+
+    class="btn btn-primary"
+
+    onclick="alert('Next Step : Google Sheets Submission')"
+
+>
+
+    Submit Enquiry
+
+</button>
 
 `
 
