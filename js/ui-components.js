@@ -251,25 +251,25 @@ Object.assign(UI, {
 
     },
 
-    /* ======================================================
-       Apple Stepper
-    ====================================================== */
+/* ======================================================
+   Apple Stepper
+====================================================== */
 
-    stepper({
+stepper({
 
-        id,
+    id,
 
-        label,
+    label,
 
-        value = 1,
+    value = 1,
 
-        min = 1,
+    min = 1,
 
-        max = 10
+    max = 10
 
-    }) {
+}) {
 
-        return `
+    return `
 
 <div class="fm-field">
 
@@ -284,6 +284,8 @@ Object.assign(UI, {
         <button
 
             type="button"
+
+            id="${id}-minus"
 
             class="fm-stepper-btn"
 
@@ -303,6 +305,10 @@ Object.assign(UI, {
 
             data-value="${value}"
 
+            data-min="${min}"
+
+            data-max="${max}"
+
         >
 
             ${value}
@@ -312,6 +318,8 @@ Object.assign(UI, {
         <button
 
             type="button"
+
+            id="${id}-plus"
 
             class="fm-stepper-btn"
 
@@ -329,7 +337,8 @@ Object.assign(UI, {
 
 `;
 
-    },
+},
+    
 
     /* ======================================================
        Stepper Change
