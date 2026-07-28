@@ -1,6 +1,6 @@
 /* ==========================================================
    FM STORE-STYLES
-   UI Components
+   UI Components V1
 ========================================================== */
 
 'use strict';
@@ -16,11 +16,17 @@ Object.assign(UI, {
     select({
 
         id,
+
         label,
+
         placeholder = 'Select',
+
         value = '',
+
         options = [],
+
         required = false,
+
         searchable = false
 
     }) {
@@ -117,7 +123,7 @@ Object.assign(UI, {
 
     },
 
-    /* ======================================================
+        /* ======================================================
        Input
     ====================================================== */
 
@@ -162,6 +168,8 @@ Object.assign(UI, {
         value="${value}"
 
         placeholder="${placeholder}"
+
+        autocomplete="off"
 
         ${maxlength ? `maxlength="${maxlength}"` : ''}
 
@@ -217,7 +225,7 @@ Object.assign(UI, {
 
     },
 
-    /* ======================================================
+        /* ======================================================
        Button
     ====================================================== */
 
@@ -227,7 +235,9 @@ Object.assign(UI, {
 
         onclick = '',
 
-        type = 'primary'
+        type = 'primary',
+
+        disabled = false
 
     }) {
 
@@ -238,6 +248,8 @@ Object.assign(UI, {
     type="button"
 
     class="btn btn-${type}"
+
+    ${disabled ? 'disabled' : ''}
 
     onclick="${onclick}"
 
@@ -251,25 +263,25 @@ Object.assign(UI, {
 
     },
 
-/* ======================================================
-   Apple Stepper
-====================================================== */
+    /* ======================================================
+       Apple Stepper
+    ====================================================== */
 
-stepper({
+    stepper({
 
-    id,
+        id,
 
-    label,
+        label,
 
-    value = 1,
+        value = 1,
 
-    min = 1,
+        min = 1,
 
-    max = 10
+        max = 10
 
-}) {
+    }) {
 
-    return `
+        return `
 
 <div class="fm-field">
 
@@ -337,20 +349,18 @@ stepper({
 
 `;
 
-},
-    
-
-    /* ======================================================
+    },
+        /* ======================================================
        Stepper Change
     ====================================================== */
 
     stepperChange(id, change, min, max) {
 
-        const element = document.getElementById(id);
+        const valueElement = document.getElementById(id);
 
-        if (!element) return;
+        if (!valueElement) return;
 
-        let value = Number(element.dataset.value || 1);
+        let value = Number(valueElement.dataset.value);
 
         value += change;
 
@@ -358,13 +368,70 @@ stepper({
 
         if (value > max) value = max;
 
-        element.dataset.value = value;
+        valueElement.dataset.value = value;
 
-        element.textContent = value;
+        valueElement.textContent = value;
+
+        const minus = document.getElementById(`${id}-minus`);
+
+        const plus = document.getElementById(`${id}-plus`);
+
+        if (minus) {
+
+            minus.disabled = value <= min;
+
+        }
+
+        if (plus) {
+
+            plus.disabled = value >= max;
+
+        }
+
+        valueElement.classList.remove('fm-stepper-pop');
+
+        void valueElement.offsetWidth;
+
+        valueElement.classList.add('fm-stepper-pop');
 
     },
 
     /* ======================================================
+       Initialize Steppers
+    ====================================================== */
+
+    initSteppers() {
+
+        document.querySelectorAll('.fm-stepper-value').forEach(element => {
+
+            const id = element.id;
+
+            const value = Number(element.dataset.value);
+
+            const min = Number(element.dataset.min);
+
+            const max = Number(element.dataset.max);
+
+            const minus = document.getElementById(`${id}-minus`);
+
+            const plus = document.getElementById(`${id}-plus`);
+
+            if (minus) {
+
+                minus.disabled = value <= min;
+
+            }
+
+            if (plus) {
+
+                plus.disabled = value >= max;
+
+            }
+
+        });
+
+    },
+        /* ======================================================
        Open Bottom Sheet
     ====================================================== */
 
@@ -463,8 +530,7 @@ stepper({
         this.closeBottomSheet();
 
     },
-
-    /* ======================================================
+        /* ======================================================
        Close Bottom Sheet
     ====================================================== */
 
@@ -476,25 +542,23 @@ stepper({
 
         this.bottomSheetRoot.innerHTML = '';
 
-    }
+    },
 
-,
+    /* ======================================================
+       Section
+    ====================================================== */
 
-/* ======================================================
-   Section
-====================================================== */
+    section({
 
-section({
+        id,
 
-    id,
+        hidden = false,
 
-    hidden = false,
+        body = ''
 
-    body = ''
+    }) {
 
-}) {
-
-    return `
+        return `
 
 <div
 
@@ -512,52 +576,52 @@ section({
 
 `;
 
-},
+    },
 
-/* ======================================================
-   Show Section
-====================================================== */
+    /* ======================================================
+       Show Section
+    ====================================================== */
 
-show(id) {
+    show(id) {
 
-    const element = document.getElementById(id);
+        const element = document.getElementById(id);
 
-    if (!element) return;
+        if (!element) return;
 
-    element.style.display = '';
+        element.style.display = '';
 
-},
+    },
 
-/* ======================================================
-   Hide Section
-====================================================== */
+    /* ======================================================
+       Hide Section
+    ====================================================== */
 
-hide(id) {
+    hide(id) {
 
-    const element = document.getElementById(id);
+        const element = document.getElementById(id);
 
-    if (!element) return;
+        if (!element) return;
 
-    element.style.display = 'none';
+        element.style.display = 'none';
 
-},
+    },
 
-/* ======================================================
-   Toggle Section
-====================================================== */
+    /* ======================================================
+       Toggle Section
+    ====================================================== */
 
-toggle(id, show) {
+    toggle(id, show) {
 
-    if (show) {
+        if (show) {
 
-        this.show(id);
+            this.show(id);
 
-    } else {
+        } else {
 
-        this.hide(id);
+            this.hide(id);
+
+        }
 
     }
-
-}
 
 });
