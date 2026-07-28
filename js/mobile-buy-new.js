@@ -289,6 +289,8 @@ ${UI.button({
             });
 
         }
+        
+        this.toggleWhatsapp();
 
     },
 
@@ -309,6 +311,28 @@ ${UI.button({
         }
 
     },
+
+    /* ======================================================
+   WhatsApp Toggle
+====================================================== */
+
+toggleWhatsapp() {
+
+    const checkbox = document.getElementById('sameWhatsapp');
+
+    if (!checkbox) return;
+
+    if (checkbox.checked) {
+
+        UI.hide('whatsappSection');
+
+    } else {
+
+        UI.show('whatsappSection');
+
+    }
+
+},
 
     /* ======================================================
        Get Field Value
