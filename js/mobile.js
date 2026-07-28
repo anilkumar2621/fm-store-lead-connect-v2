@@ -31,7 +31,7 @@ const Mobile = {
 
         <button
             class="card"
-            onclick="Router.go('buy')"
+            onclick="Router.go('mobileBuy')"
         >
 
             <div class="card-icon">
