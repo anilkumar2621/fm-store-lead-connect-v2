@@ -378,6 +378,42 @@ getWhatsappNumber() {
 
 },
 
+/* ======================================================
+   Focus Field
+====================================================== */
+
+focusField(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+
+        behavior: 'smooth',
+
+        block: 'center'
+
+    });
+
+    element.focus();
+
+},
+
+/* ======================================================
+   Mark Invalid
+====================================================== */
+
+markInvalid(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.classList.add('fm-invalid');
+
+},
+
     /* ======================================================
        Validate
     ====================================================== */
@@ -385,6 +421,10 @@ getWhatsappNumber() {
     validate() {
 
         if (!this.getValue('brand')) {
+
+            this.markInvalid('brand');
+
+            this.focusField('brand');
 
             UI.toast('Please select a Brand', 'warning');
 
@@ -408,6 +448,10 @@ getWhatsappNumber() {
 
         if (!this.getValue('customerName')) {
 
+            this.markInvalid('customerName');
+
+            this.focusField('customerName');
+
             UI.toast('Please enter Full Name', 'warning');
 
             return false;
@@ -417,6 +461,10 @@ getWhatsappNumber() {
         const phone = this.getValue('customerPhone');
 
         if (!/^[0-9]{10}$/.test(phone)) {
+
+            this.markInvalid('customerPhone');
+
+            this.focusField('customerPhone');
 
             UI.toast('Enter a valid 10 digit Mobile Number', 'warning');
 
