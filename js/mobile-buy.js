@@ -4,86 +4,31 @@ const MobileBuy = {
 
     render() {
 
-        UI.render(`
+        UI.page({
 
-<section class="container fade-in">
+            title: 'Buy Mobile',
 
-    <button
-        class="btn btn-secondary"
-        onclick="Router.go('mobile')"
-    >
-        ← Back
-    </button>
+            subtitle: 'Choose the type of mobile you want to purchase.',
 
-    <div class="page-header">
+            back: 'mobile',
 
-        <h1>🛒 Buy Mobile</h1>
+            content: UI.actionList([
 
-        <p>
+                {
+                    title: 'New Mobile',
+                    description: 'Browse our latest brand new smartphones.',
+                    route: 'mobileBuyNew'
+                },
 
-            Choose the type of mobile you want to purchase
+                {
+                    title: 'Pre-Owned Mobile',
+                    description: 'Explore certified pre-owned smartphones.',
+                    route: 'mobileBuyPreowned'
+                }
 
-        </p>
+            ])
 
-    </div>
-
-    <div class="card-grid">
-
-        <button
-            class="card"
-            onclick="Router.go('mobileBuyNew')"
-        >
-
-            <div class="card-icon">
-
-                🆕
-
-            </div>
-
-            <h3>
-
-                New Mobile
-
-            </h3>
-
-            <p>
-
-                Brand New Smartphones
-
-            </p>
-
-        </button>
-
-        <button
-            class="card"
-            onclick="Router.go('mobileBuyPreowned')"
-        >
-
-            <div class="card-icon">
-
-                ♻️
-
-            </div>
-
-            <h3>
-
-                Pre-Owned Mobile
-
-            </h3>
-
-            <p>
-
-                Certified Used Smartphones
-
-            </p>
-
-        </button>
-
-    </div>
-
-</section>
-
-        `);
+        });
 
     }
 

@@ -1,6 +1,6 @@
 /* ==========================================================
    FM STORE-STYLES
-   UI Manager
+   UI Framework V5
 ========================================================== */
 
 'use strict';
@@ -25,6 +25,10 @@ const UI = {
 
     },
 
+    /* ======================================================
+       Loader
+    ====================================================== */
+
     showLoader() {
 
         if (!this.loader || !this.appContainer) return;
@@ -42,6 +46,10 @@ const UI = {
         this.appContainer.classList.remove('hidden');
 
     },
+
+    /* ======================================================
+       Toast
+    ====================================================== */
 
     toast(message, type = 'success') {
 
@@ -63,6 +71,10 @@ const UI = {
 
     },
 
+    /* ======================================================
+       Render
+    ====================================================== */
+
     clearApp() {
 
         if (this.appContainer) {
@@ -81,15 +93,16 @@ const UI = {
 
     },
 
+    /* ======================================================
+       PAGE
+    ====================================================== */
+
     page({
 
-        title,
-
-        subtitle,
-
-        back,
-
-        content
+        title = '',
+        subtitle = '',
+        back = '',
+        content = ''
 
     }) {
 
@@ -99,12 +112,17 @@ const UI = {
 
     <div class="fm-page-top">
 
+        ${back ? `
+
         <button
             class="fm-back-btn"
-            onclick="Router.go('${back}')"
-        >
+            onclick="Router.go('${back}')">
+
             ← Back
+
         </button>
+
+        ` : ''}
 
     </div>
 
@@ -116,11 +134,15 @@ const UI = {
 
         </h1>
 
+        ${subtitle ? `
+
         <p class="fm-page-subtitle">
 
             ${subtitle}
 
         </p>
+
+        ` : ''}
 
     </div>
 
@@ -134,7 +156,12 @@ const UI = {
 
         `);
 
-    },
+    },  
+
+ 
+    /* ======================================================
+       GLOBAL EVENTS
+    ====================================================== */
 
     bindGlobalEvents() {
 
@@ -146,7 +173,10 @@ const UI = {
 
         window.addEventListener('offline', () => {
 
-            this.toast('No internet connection', 'warning');
+            this.toast(
+                'No internet connection',
+                'warning'
+            );
 
         });
 

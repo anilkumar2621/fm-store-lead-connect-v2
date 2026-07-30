@@ -123,29 +123,120 @@ Object.assign(UI, {
 
     },
 
+       /* ======================================================
+       ACTION CARD
+    ====================================================== */
+
+    actionCard({
+
+        title = '',
+        description = '',
+        route = '',
+        onclick = ''
+
+    }) {
+
+        const action = route
+            ? `Router.go('${route}')`
+            : onclick;
+
+        return `
+
+<button
+    class="fm-action-card"
+    onclick="${action}">
+
+    <div class="fm-action-left">
+
+        <h3 class="fm-action-title">
+
+            ${title}
+
+        </h3>
+
+        <p class="fm-action-description">
+
+            ${description}
+
+        </p>
+
+    </div>
+
+    <div class="fm-action-arrow">
+
+        →
+
+    </div>
+
+</button>
+
+        `;
+
+    },
+
+      /* ======================================================
+       ACTION LIST
+    ====================================================== */
+
+    actionList(items = []) {
+
+        return `
+
+<div class="fm-action-list">
+
+    ${items.map(item =>
+
+        UI.actionCard({
+
+            title: item.title,
+
+            description: item.description,
+
+            route: item.route,
+
+            onclick: item.onclick || ''
+
+        })
+
+    ).join('')}
+
+</div>
+
+        `;
+
+    }, 
+
         /* ======================================================
        Input
     ====================================================== */
 
     input({
 
-        id,
+    id,
 
-        label,
+    label,
 
-        placeholder = '',
+    placeholder = '',
 
-        type = 'text',
+    type = 'text',
 
-        value = '',
+    value = '',
 
-        required = false,
+    required = false,
 
-        maxlength = ''
+    disabled = false,
 
-    }) {
+    readonly = false,
 
-        return `
+    maxlength = '',
+
+    inputmode = '',
+
+    autocomplete = 'off'
+
+}) {
+
+    return `
 
 <div class="fm-field">
 
@@ -169,9 +260,15 @@ Object.assign(UI, {
 
         placeholder="${placeholder}"
 
-        autocomplete="off"
+        autocomplete="${autocomplete}"
+
+        ${inputmode ? `inputmode="${inputmode}"` : ''}
 
         ${maxlength ? `maxlength="${maxlength}"` : ''}
+
+        ${disabled ? 'disabled' : ''}
+
+        ${readonly ? 'readonly' : ''}
 
     >
 
@@ -179,7 +276,7 @@ Object.assign(UI, {
 
 `;
 
-    },
+},
 
     /* ======================================================
        Textarea
