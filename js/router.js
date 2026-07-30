@@ -37,7 +37,7 @@ const Router = {
 
         mobileBuyPreowned() {
 
-            MobileBuyPreowned.render();
+            MobileBuyPreOwned.render();
 
         },
 

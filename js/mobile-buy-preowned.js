@@ -21,41 +21,41 @@ const MobileBuyPreOwned = {
 
 ${UI.card({
 
-    title:'Mobile Requirements',
+    title: 'Mobile Requirements',
 
-    body:`
+    body: `
 
 ${UI.select({
 
-    id:'brand',
+    id: 'brand',
 
-    label:'Brand',
+    label: 'Brand',
 
-    placeholder:'Select Brand',
+    placeholder: 'Select Brand',
 
-    options:CONFIG.MOBILE.BRANDS,
+    options: CONFIG.MOBILE.BRANDS,
 
-    required:true
+    required: true
 
 })}
 
 ${UI.section({
 
-    id:'otherBrandSection',
+    id: 'otherBrandSection',
 
-    hidden:true,
+    hidden: true,
 
-    body:`
+    body: `
 
 ${UI.input({
 
-    id:'otherBrand',
+    id: 'otherBrand',
 
-    label:'Other Brand',
+    label: 'Other Brand',
 
-    placeholder:'Enter Brand Name',
+    placeholder: 'Enter Brand Name',
 
-    required:true
+    required: true
 
 })}
 
@@ -65,23 +65,23 @@ ${UI.input({
 
 ${UI.input({
 
-    id:'model',
+    id: 'model',
 
-    label:'Model',
+    label: 'Model',
 
-    placeholder:'Example: iPhone 15 Pro'
+    placeholder: 'Example: iPhone 15 Pro'
 
 })}
 
 ${UI.select({
 
-    id:'ram',
+    id: 'ram',
 
-    label:'RAM',
+    label: 'RAM',
 
-    placeholder:'Select RAM',
+    placeholder: 'Select RAM',
 
-    options:[
+    options: [
 
         'Not Sure',
 
@@ -93,13 +93,13 @@ ${UI.select({
 
 ${UI.select({
 
-    id:'storage',
+    id: 'storage',
 
-    label:'Storage',
+    label: 'Storage',
 
-    placeholder:'Select Storage',
+    placeholder: 'Select Storage',
 
-    options:[
+    options: [
 
         'Not Sure',
 
@@ -111,13 +111,13 @@ ${UI.select({
 
 ${UI.select({
 
-    id:'grade',
+    id: 'grade',
 
-    label:'Preferred Grade',
+    label: 'Preferred Grade',
 
-    placeholder:'Select Grade',
+    placeholder: 'Select Grade',
 
-    options:[
+    options: [
 
         'A+',
 
@@ -137,13 +137,13 @@ ${UI.select({
 
 ${UI.select({
 
-    id:'budget',
+    id: 'budget',
 
-    label:'Budget',
+    label: 'Budget',
 
-    placeholder:'Select Budget',
+    placeholder: 'Select Budget',
 
-    options:[
+    options: [
 
         'Under ₹5,000',
 
@@ -177,19 +177,19 @@ ${UI.select({
 
 ${UI.section({
 
-    id:'otherBudgetSection',
+    id: 'otherBudgetSection',
 
-    hidden:true,
+    hidden: true,
 
-    body:`
+    body: `
 
 ${UI.input({
 
-    id:'otherBudget',
+    id: 'otherBudget',
 
-    label:'Enter Your Budget',
+    label: 'Enter Your Budget',
 
-    placeholder:'Example: ₹18,500'
+    placeholder: 'Example: ₹18,500'
 
 })}
 
@@ -199,35 +199,35 @@ ${UI.input({
 
 ${UI.input({
 
-    id:'colour',
+    id: 'colour',
 
-    label:'Preferred Colour',
+    label: 'Preferred Colour',
 
-    placeholder:'Example: Black'
+    placeholder: 'Example: Black'
 
 })}
 
 ${UI.stepper({
 
-    id:'quantity',
+    id: 'quantity',
 
-    label:'Quantity',
+    label: 'Quantity',
 
-    value:1,
+    value: 1,
 
-    min:1,
+    min: 1,
 
-    max:10
+    max: 10
 
 })}
 
 ${UI.textarea({
 
-    id:'requirements',
+    id: 'requirements',
 
-    label:'Additional Requirements',
+    label: 'Additional Requirements',
 
-    placeholder:'Mention any specific requirement...'
+    placeholder: 'Mention any specific requirement...'
 
 })}
 
@@ -236,35 +236,35 @@ ${UI.textarea({
 })},
 ${UI.card({
 
-    title:'Customer Details',
+    title: 'Customer Details',
 
-    body:`
+    body: `
 
 ${UI.input({
 
-    id:'customerName',
+    id: 'customerName',
 
-    label:'Full Name',
+    label: 'Full Name',
 
-    placeholder:'Enter Full Name',
+    placeholder: 'Enter Full Name',
 
-    required:true
+    required: true
 
 })}
 
 ${UI.input({
 
-    id:'customerPhone',
+    id: 'customerPhone',
 
-    label:'Mobile Number',
+    label: 'Mobile Number',
 
-    placeholder:'10 Digit Mobile Number',
+    placeholder: '10 Digit Mobile Number',
 
-    type:'tel',
+    type: 'tel',
 
-    maxlength:10,
+    maxlength: 10,
 
-    required:true
+    required: true
 
 })}
 
@@ -273,22 +273,13 @@ ${UI.input({
     <label class="fm-checkbox">
 
         <input
-
             type="checkbox"
-
             id="sameWhatsapp"
-
             checked
-
             onchange="MobileBuyPreOwned.toggleWhatsapp()"
-
         >
 
-        <span>
-
-            WhatsApp number is same as Mobile
-
-        </span>
+        <span>WhatsApp number is same as Mobile</span>
 
     </label>
 
@@ -296,23 +287,23 @@ ${UI.input({
 
 ${UI.section({
 
-    id:'whatsappSection',
+    id: 'whatsappSection',
 
-    hidden:true,
+    hidden: true,
 
-    body:`
+    body: `
 
 ${UI.input({
 
-    id:'customerWhatsapp',
+    id: 'customerWhatsapp',
 
-    label:'WhatsApp Number',
+    label: 'WhatsApp Number',
 
-    placeholder:'WhatsApp Number',
+    placeholder: 'WhatsApp Number',
 
-    type:'tel',
+    type: 'tel',
 
-    maxlength:10
+    maxlength: 10
 
 })}
 
@@ -322,13 +313,13 @@ ${UI.input({
 
 ${UI.select({
 
-    id:'contactMethod',
+    id: 'contactMethod',
 
-    label:'Preferred Contact',
+    label: 'Preferred Contact',
 
-    placeholder:'Select Contact Method',
+    placeholder: 'Select Contact Method',
 
-    options:[
+    options: [
 
         'WhatsApp',
 
@@ -346,9 +337,9 @@ ${UI.select({
 
 ${UI.button({
 
-    text:'Submit Enquiry',
+    text: 'Submit Enquiry',
 
-    onclick:'MobileBuyPreOwned.submit()'
+    onclick: 'MobileBuyPreOwned.submit()'
 
 })}
 
@@ -359,7 +350,6 @@ ${UI.button({
         MobileBuyPreOwned.init();
 
     },
-
         /* ======================================================
        Initialize
     ====================================================== */
@@ -550,8 +540,6 @@ ${UI.button({
 
     validate() {
 
-        // Clear previous validation
-
         [
             'brand',
             'otherBrand',
@@ -567,7 +555,9 @@ ${UI.button({
         if (!this.getValue('brand')) {
 
             this.markInvalid('brand');
+
             this.focusField('brand');
+
             UI.toast('Please select a Brand', 'warning');
 
             return false;
@@ -579,12 +569,15 @@ ${UI.button({
         if (
 
             this.getValue('brand') === 'Other' &&
+
             !this.getValue('otherBrand')
 
         ) {
 
             this.markInvalid('otherBrand');
+
             this.focusField('otherBrand');
+
             UI.toast('Please enter Brand Name', 'warning');
 
             return false;
@@ -596,12 +589,15 @@ ${UI.button({
         if (
 
             this.getValue('budget') === 'Other Budget' &&
+
             !this.getValue('otherBudget')
 
         ) {
 
             this.markInvalid('otherBudget');
+
             this.focusField('otherBudget');
+
             UI.toast('Please enter your Budget', 'warning');
 
             return false;
@@ -613,7 +609,9 @@ ${UI.button({
         if (!this.getValue('customerName')) {
 
             this.markInvalid('customerName');
+
             this.focusField('customerName');
+
             UI.toast('Please enter Full Name', 'warning');
 
             return false;
@@ -627,7 +625,9 @@ ${UI.button({
         if (!/^[0-9]{10}$/.test(phone)) {
 
             this.markInvalid('customerPhone');
+
             this.focusField('customerPhone');
+
             UI.toast('Enter a valid 10 digit Mobile Number', 'warning');
 
             return false;
@@ -645,7 +645,9 @@ ${UI.button({
             if (!/^[0-9]{10}$/.test(whatsapp)) {
 
                 this.markInvalid('customerWhatsapp');
+
                 this.focusField('customerWhatsapp');
+
                 UI.toast('Enter a valid 10 digit WhatsApp Number', 'warning');
 
                 return false;
@@ -731,4 +733,6 @@ ${UI.button({
 
         }, 1000);
 
-    }};
+    }
+
+};
