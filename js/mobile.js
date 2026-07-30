@@ -4,111 +4,110 @@ const Mobile = {
 
     render() {
 
-        UI.render(`
+        UI.page({
 
-<section class="container fade-in">
+            title: 'Mobile Enquiry',
+
+            subtitle: 'Choose what you would like to do.',
+
+            back: 'home',
+
+            content: `
+
+<div class="fm-action-list">
 
     <button
-        class="btn btn-secondary"
-        onclick="Router.go('home')"
+        class="fm-action-card"
+        onclick="Router.go('mobileBuy')"
     >
-        ← Back
-    </button>
 
-    <div class="page-header">
+        <div class="fm-action-left">
 
-        <h1>📱 Mobile Enquiry</h1>
-
-        <p>
-
-            What would you like to do?
-
-        </p>
-
-    </div>
-
-    <div class="card-grid">
-
-        <button
-            class="card"
-            onclick="Router.go('mobileBuy')"
-        >
-
-            <div class="card-icon">
-
-                🛒
-
-            </div>
-
-            <h3>
+            <h3 class="fm-action-title">
 
                 Buy Mobile
 
             </h3>
 
-            <p>
+            <p class="fm-action-description">
 
-                Purchase New or Pre-Owned Mobiles
+                Purchase new or pre-owned smartphones.
 
             </p>
 
-        </button>
+        </div>
 
-        <button
-            class="card"
-            onclick="alert('Sell Mobile - Coming Soon')"
-        >
+        <div class="fm-action-arrow">
 
-            <div class="card-icon">
+            →
 
-                💰
+        </div>
 
-            </div>
+    </button>
 
-            <h3>
+    <button
+        class="fm-action-card"
+        onclick="alert('Sell Mobile - Coming Soon')"
+    >
+
+        <div class="fm-action-left">
+
+            <h3 class="fm-action-title">
 
                 Sell Mobile
 
             </h3>
 
-            <p>
+            <p class="fm-action-description">
 
-                Sell Your Existing Mobile
+                Sell your existing smartphone.
 
             </p>
 
-        </button>
+        </div>
 
-        <button
-            class="card"
-            onclick="alert('Exchange Mobile - Coming Soon')"
-        >
+        <div class="fm-action-arrow">
 
-            <div class="card-icon">
+            →
 
-                🔄
+        </div>
 
-            </div>
+    </button>
 
-            <h3>
+    <button
+        class="fm-action-card"
+        onclick="alert('Exchange Mobile - Coming Soon')"
+    >
+
+        <div class="fm-action-left">
+
+            <h3 class="fm-action-title">
 
                 Exchange Mobile
 
             </h3>
 
-            <p>
+            <p class="fm-action-description">
 
-                Trade Your Existing Mobile
+                Exchange your current phone for another.
 
             </p>
 
-        </button>
+        </div>
 
-    </div>
+        <div class="fm-action-arrow">
 
-</section>
+            →
 
-        `);
+        </div>
+
+    </button>
+
+</div>
+
+            `
+
+        });
 
     }
 

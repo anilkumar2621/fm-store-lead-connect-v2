@@ -97,26 +97,38 @@ const UI = {
 
 <section class="container fade-in">
 
-    <button
-        class="btn btn-secondary"
-        onclick="Router.go('${back}')"
-    >
-        ← Back
-    </button>
+    <div class="fm-page-top">
+
+        <button
+            class="fm-back-btn"
+            onclick="Router.go('${back}')"
+        >
+            ← Back
+        </button>
+
+    </div>
 
     <div class="fm-page-header">
 
         <h1 class="fm-page-title">
+
             ${title}
+
         </h1>
 
         <p class="fm-page-subtitle">
+
             ${subtitle}
+
         </p>
 
     </div>
 
-    ${content}
+    <div class="fm-page-content">
+
+        ${content}
+
+    </div>
 
 </section>
 
