@@ -332,31 +332,8 @@ ${UI.button({
         }
 
     },
-        /* ======================================================
-       Get Field Value
-    ====================================================== */
 
-    getValue(id) {
-
-        const element = document.getElementById(id);
-
-        if (!element) return '';
-
-        if (element.classList.contains('fm-select')) {
-
-            return element.dataset.value || '';
-
-        }
-
-        if (element.classList.contains('fm-stepper-value')) {
-
-            return element.dataset.value || '1';
-
-        }
-
-        return element.value.trim();
-
-    },
+    
 
     /* ======================================================
        Get WhatsApp Number
@@ -368,63 +345,17 @@ ${UI.button({
 
         if (checkbox && checkbox.checked) {
 
-            return this.getValue('customerPhone');
+            return Validator.getValue('customerPhone');
 
         }
 
-        return this.getValue('customerWhatsapp');
+        return Validator.getValue('customerWhatsapp');
 
     },
 
-    /* ======================================================
-       Focus Field
-    ====================================================== */
+    
 
-    focusField(id) {
 
-        const element = document.getElementById(id);
-
-        if (!element) return;
-
-        element.scrollIntoView({
-
-            behavior: 'smooth',
-
-            block: 'center'
-
-        });
-
-        element.focus();
-
-    },
-
-    /* ======================================================
-       Mark Invalid
-    ====================================================== */
-
-    markInvalid(id) {
-
-        const element = document.getElementById(id);
-
-        if (!element) return;
-
-        element.classList.add('fm-invalid');
-
-    },
-
-    /* ======================================================
-       Clear Invalid
-    ====================================================== */
-
-    clearInvalid(id) {
-
-        const element = document.getElementById(id);
-
-        if (!element) return;
-
-        element.classList.remove('fm-invalid');
-
-    },
         /* ======================================================
        Validate
     ====================================================== */
@@ -439,15 +370,15 @@ ${UI.button({
             'customerName',
             'customerPhone',
             'customerWhatsapp'
-        ].forEach(id => this.clearInvalid(id));
+        ].forEach(id => Validator.clearInvalid(id));
 
         // Brand
 
-        if (!this.getValue('brand')) {
+        if (!Validator.getValue('brand')) {
 
-            this.markInvalid('brand');
+            Validator.markInvalid('brand');
 
-            this.focusField('brand');
+            Validator.focus('brand');
 
             UI.toast('Please select a Brand', 'warning');
 
@@ -459,15 +390,15 @@ ${UI.button({
 
         if (
 
-            this.getValue('brand') === 'Other' &&
+            Validator.getValue('brand') === 'Other' &&
 
-            !this.getValue('otherBrand')
+            !Validator.getValue('otherBrand')
 
         ) {
 
-            this.markInvalid('otherBrand');
+            Validator.markInvalid('otherBrand');
 
-            this.focusField('otherBrand');
+            Validator.focus('otherBrand');
 
             UI.toast('Please enter Brand Name', 'warning');
 
@@ -477,11 +408,11 @@ ${UI.button({
 
         // Customer Name
 
-        if (!this.getValue('customerName')) {
+        if (!Validator.getValue('customerName')) {
 
-            this.markInvalid('customerName');
+            Validator.markInvalid('customerName');
 
-            this.focusField('customerName');
+            Validator.focus('customerName');
 
             UI.toast('Please enter Full Name', 'warning');
 
@@ -491,13 +422,13 @@ ${UI.button({
 
         // Mobile Number
 
-        const phone = this.getValue('customerPhone');
+        const phone = Validator.getValue('customerPhone');
 
         if (!/^[0-9]{10}$/.test(phone)) {
 
-            this.markInvalid('customerPhone');
+            Validator.markInvalid('customerPhone');
 
-            this.focusField('customerPhone');
+            Validator.focus('customerPhone');
 
             UI.toast('Enter a valid 10 digit Mobile Number', 'warning');
 
@@ -517,13 +448,13 @@ ${UI.button({
 
         ) {
 
-            const whatsapp = this.getValue('customerWhatsapp');
+            const whatsapp = Validator.getValue('customerWhatsapp');
 
             if (!/^[0-9]{10}$/.test(whatsapp)) {
 
-                this.markInvalid('customerWhatsapp');
+                Validator.markInvalid('customerWhatsapp');
 
-                this.focusField('customerWhatsapp');
+                Validator.focus('customerWhatsapp');
 
                 UI.toast('Enter a valid 10 digit WhatsApp Number', 'warning');
 
@@ -562,29 +493,29 @@ ${UI.button({
 
             enquiryType: 'New Mobile',
 
-            brand: this.getValue('brand'),
+            brand: Validator.getValue('brand'),
 
-            otherBrand: this.getValue('otherBrand'),
+            otherBrand: Validator.getValue('otherBrand'),
 
-            model: this.getValue('model'),
+            model: Validator.getValue('model'),
 
-            ram: this.getValue('ram'),
+            ram: Validator.getValue('ram'),
 
-            storage: this.getValue('storage'),
+            storage: Validator.getValue('storage'),
 
-            colour: this.getValue('colour'),
+            colour: Validator.getValue('colour'),
 
-            quantity: this.getValue('quantity'),
+            quantity: Validator.getValue('quantity'),
 
-            requirements: this.getValue('requirements'),
+            requirements: Validator.getValue('requirements'),
 
-            customerName: this.getValue('customerName'),
+            customerName: Validator.getValue('customerName'),
 
-            customerPhone: this.getValue('customerPhone'),
+            customerPhone: Validator.getValue('customerPhone'),
 
             customerWhatsapp: this.getWhatsappNumber(),
 
-            contactMethod: this.getValue('contactMethod')
+            contactMethod: Validator.getValue('contactMethod')
 
         };
 

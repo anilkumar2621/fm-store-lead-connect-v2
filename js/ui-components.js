@@ -27,7 +27,9 @@ Object.assign(UI, {
 
         required = false,
 
-        searchable = false
+        searchable = false,
+
+        disabled = false
 
     }) {
 
@@ -47,19 +49,20 @@ Object.assign(UI, {
 
     <button
 
-        type="button"
+    type="button"
 
-        id="${id}"
+    id="${id}"
 
-        class="fm-select"
+    class="fm-select"
 
-        data-value="${value}"
+    ${disabled ? 'disabled' : ''}
 
-        data-searchable="${searchable}"
+    data-value="${value}"
 
-        onclick="UI.openBottomSheet('${id}','Choose ${label}')"
+    data-searchable="${searchable}"
 
-    >
+    onclick="UI.openBottomSheet('${id}','Choose ${label}')"
+>
 
         <span class="fm-select-text">
 
@@ -328,15 +331,17 @@ Object.assign(UI, {
 
     button({
 
-        text,
+    text,
 
-        onclick = '',
+    onclick = '',
 
-        type = 'primary',
+    type = 'primary',
 
-        disabled = false
+    disabled = false,
 
-    }) {
+    loading = false
+
+}) {
 
         return `
 
@@ -346,13 +351,13 @@ Object.assign(UI, {
 
     class="btn btn-${type}"
 
-    ${disabled ? 'disabled' : ''}
+    ${disabled || loading ? 'disabled' : ''}
 
     onclick="${onclick}"
 
 >
 
-    ${text}
+    ${loading ? 'Please wait...' : text}
 
 </button>
 
