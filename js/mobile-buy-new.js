@@ -145,11 +145,10 @@ ${UI.textarea({
 
 `
 
-})}
-
+})},
 ${UI.card({
 
-    title:'Your Details',
+    title:'Customer Details',
 
     body:`
 
@@ -180,6 +179,7 @@ ${UI.input({
     required:true
 
 })}
+
 <div class="fm-field">
 
     <label class="fm-checkbox">
@@ -244,7 +244,7 @@ ${UI.select({
 
         'WhatsApp',
 
-        'Call',
+        'Phone Call',
 
         'Either'
 
@@ -271,8 +271,7 @@ ${UI.button({
         MobileBuyNew.init();
 
     },
-
-    /* ======================================================
+        /* ======================================================
        Initialize
     ====================================================== */
 
@@ -313,28 +312,27 @@ ${UI.button({
     },
 
     /* ======================================================
-   WhatsApp Toggle
-====================================================== */
+       WhatsApp Toggle
+    ====================================================== */
 
-toggleWhatsapp() {
+    toggleWhatsapp() {
 
-    const checkbox = document.getElementById('sameWhatsapp');
+        const checkbox = document.getElementById('sameWhatsapp');
 
-    if (!checkbox) return;
+        if (!checkbox) return;
 
-    if (checkbox.checked) {
+        if (checkbox.checked) {
 
-        UI.hide('whatsappSection');
+            UI.hide('whatsappSection');
 
-    } else {
+        } else {
 
-        UI.show('whatsappSection');
+            UI.show('whatsappSection');
 
-    }
+        }
 
-},
-
-    /* ======================================================
+    },
+        /* ======================================================
        Get Field Value
     ====================================================== */
 
@@ -361,64 +359,89 @@ toggleWhatsapp() {
     },
 
     /* ======================================================
-   Get WhatsApp Number
-====================================================== */
+       Get WhatsApp Number
+    ====================================================== */
 
-getWhatsappNumber() {
+    getWhatsappNumber() {
 
-    const checkbox = document.getElementById('sameWhatsapp');
+        const checkbox = document.getElementById('sameWhatsapp');
 
-    if (checkbox && checkbox.checked) {
+        if (checkbox && checkbox.checked) {
 
-        return this.getValue('customerPhone');
+            return this.getValue('customerPhone');
 
-    }
+        }
 
-    return this.getValue('customerWhatsapp');
+        return this.getValue('customerWhatsapp');
 
-},
-
-/* ======================================================
-   Focus Field
-====================================================== */
-
-focusField(id) {
-
-    const element = document.getElementById(id);
-
-    if (!element) return;
-
-    element.scrollIntoView({
-
-        behavior: 'smooth',
-
-        block: 'center'
-
-    });
-
-    element.focus();
-
-},
-
-/* ======================================================
-   Mark Invalid
-====================================================== */
-
-markInvalid(id) {
-
-    const element = document.getElementById(id);
-
-    if (!element) return;
-
-    element.classList.add('fm-invalid');
-
-},
+    },
 
     /* ======================================================
+       Focus Field
+    ====================================================== */
+
+    focusField(id) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        element.scrollIntoView({
+
+            behavior: 'smooth',
+
+            block: 'center'
+
+        });
+
+        element.focus();
+
+    },
+
+    /* ======================================================
+       Mark Invalid
+    ====================================================== */
+
+    markInvalid(id) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        element.classList.add('fm-invalid');
+
+    },
+
+    /* ======================================================
+       Clear Invalid
+    ====================================================== */
+
+    clearInvalid(id) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        element.classList.remove('fm-invalid');
+
+    },
+        /* ======================================================
        Validate
     ====================================================== */
 
     validate() {
+
+        // Clear previous validation
+
+        [
+            'brand',
+            'otherBrand',
+            'customerName',
+            'customerPhone',
+            'customerWhatsapp'
+        ].forEach(id => this.clearInvalid(id));
+
+        // Brand
 
         if (!this.getValue('brand')) {
 
@@ -432,6 +455,8 @@ markInvalid(id) {
 
         }
 
+        // Other Brand
+
         if (
 
             this.getValue('brand') === 'Other' &&
@@ -440,11 +465,17 @@ markInvalid(id) {
 
         ) {
 
+            this.markInvalid('otherBrand');
+
+            this.focusField('otherBrand');
+
             UI.toast('Please enter Brand Name', 'warning');
 
             return false;
 
         }
+
+        // Customer Name
 
         if (!this.getValue('customerName')) {
 
@@ -457,6 +488,8 @@ markInvalid(id) {
             return false;
 
         }
+
+        // Mobile Number
 
         const phone = this.getValue('customerPhone');
 
@@ -472,11 +505,38 @@ markInvalid(id) {
 
         }
 
+        // WhatsApp Number (only when different)
+
+        const sameWhatsapp = document.getElementById('sameWhatsapp');
+
+        if (
+
+            sameWhatsapp &&
+
+            !sameWhatsapp.checked
+
+        ) {
+
+            const whatsapp = this.getValue('customerWhatsapp');
+
+            if (!/^[0-9]{10}$/.test(whatsapp)) {
+
+                this.markInvalid('customerWhatsapp');
+
+                this.focusField('customerWhatsapp');
+
+                UI.toast('Enter a valid 10 digit WhatsApp Number', 'warning');
+
+                return false;
+
+            }
+
+        }
+
         return true;
 
     },
-
-    /* ======================================================
+        /* ======================================================
        Submit
     ====================================================== */
 
@@ -485,6 +545,16 @@ markInvalid(id) {
         if (!this.validate()) {
 
             return;
+
+        }
+
+        const button = document.querySelector('.btn');
+
+        if (button) {
+
+            button.disabled = true;
+
+            button.textContent = 'Submitting...';
 
         }
 
@@ -522,6 +592,18 @@ markInvalid(id) {
 
         UI.toast('Ready for Google Sheets Integration');
 
-    }
+        setTimeout(() => {
 
-};
+            if (button) {
+
+                button.disabled = false;
+
+                button.textContent = 'Submit Enquiry';
+
+            }
+
+        }, 1000);
+
+    }
+    };
+    
