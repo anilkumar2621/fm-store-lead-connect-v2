@@ -84,8 +84,11 @@ const UI = {
     page({
 
         title,
+
         subtitle,
+
         back,
+
         content
 
     }) {
@@ -98,23 +101,17 @@ const UI = {
         class="btn btn-secondary"
         onclick="Router.go('${back}')"
     >
-
         ← Back
-
     </button>
 
-    <div class="page-header">
+    <div class="fm-page-header">
 
-        <h1>
-
+        <h1 class="fm-page-title">
             ${title}
-
         </h1>
 
-        <p>
-
+        <p class="fm-page-subtitle">
             ${subtitle}
-
         </p>
 
     </div>

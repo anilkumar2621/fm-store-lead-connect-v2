@@ -2451,3 +2451,61 @@ body{
 
 }
 
+/* ==========================================================
+   V4 Premium Page Header
+========================================================== */
+
+.fm-page-header{
+
+    margin:28px 0 34px;
+
+}
+
+.fm-page-title{
+
+    font-size:44px;
+
+    font-weight:800;
+
+    line-height:1.05;
+
+    letter-spacing:-1px;
+
+    margin:0;
+
+}
+
+.fm-page-subtitle{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+    color:#777;
+
+    line-height:1.5;
+
+    max-width:620px;
+
+}
+@media(max-width:768px){
+
+.fm-page-header{
+
+    margin:34px 0 26px;
+
+}
+
+.fm-page-title{
+
+    font-size:28px;
+
+}
+
+.fm-page-subtitle{
+
+    font-size:16px;
+
+}
+
+}
