@@ -203,7 +203,7 @@ const Home = {
 
                 <button
                     class="btn btn-secondary"
-                    onclick="window.open('https://maps.google.com','_blank')"
+                    onclick="window.open('https://maps.app.goo.gl/G6LuMMycrevppmt76','_blank')"
                 >
 
                     Open in Maps
@@ -228,7 +228,7 @@ const Home = {
 
                 <button
                     class="btn btn-secondary"
-                    onclick="window.open('https://maps.google.com','_blank')"
+                    onclick="window.open('https://maps.app.goo.gl/Z4W6Qjin9FoJA6jNA','_blank')"
                 >
 
                     Open in Maps

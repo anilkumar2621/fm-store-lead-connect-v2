@@ -2082,7 +2082,7 @@ body{
 }
 
 /* ===========================
-   Apple Liquid Glass Buttons
+   Apple Glass Quick Actions
 =========================== */
 
 .action-grid{
@@ -2101,8 +2101,6 @@ body{
 
     overflow:hidden;
 
-    height:72px;
-
     display:flex;
 
     align-items:center;
@@ -2111,28 +2109,44 @@ body{
 
     gap:12px;
 
-    border-radius:24px;
+    width:100%;
 
-    color:#fff;
+    height:72px;
+
+    border:none;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    color:#1d1d1f;
 
     font-size:17px;
 
-    font-weight:700;
+    font-weight:600;
 
-    border:1px solid rgba(255,255,255,.35);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.75),
+            rgba(255,255,255,.45)
+        );
+
+    border:1px solid rgba(255,255,255,.65);
 
     backdrop-filter:blur(28px) saturate(180%);
 
     -webkit-backdrop-filter:blur(28px) saturate(180%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.45),
-        inset 0 -1px 0 rgba(255,255,255,.12),
-        0 12px 35px rgba(0,0,0,.10);
+        inset 0 1px 1px rgba(255,255,255,.9),
+        inset 0 -1px 1px rgba(255,255,255,.35),
+        0 10px 24px rgba(0,0,0,.08);
 
     transition:
         transform .25s ease,
-        box-shadow .25s ease;
+        box-shadow .25s ease,
+        background .25s ease;
 
 }
 
@@ -2146,12 +2160,12 @@ body{
 
     border-radius:inherit;
 
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,.35),
-        rgba(255,255,255,.05) 45%,
-        rgba(255,255,255,.18)
-    );
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.55),
+            rgba(255,255,255,0) 45%
+        );
 
     pointer-events:none;
 
@@ -2163,20 +2177,21 @@ body{
 
     position:absolute;
 
-    top:-40%;
+    top:-55%;
 
-    left:-30%;
+    left:-20%;
 
-    width:160%;
+    width:140%;
 
-    height:60%;
+    height:90%;
 
-    background:radial-gradient(
-        rgba(255,255,255,.45),
-        transparent 70%
-    );
+    background:
+        radial-gradient(
+            rgba(255,255,255,.7),
+            transparent 70%
+        );
 
-    transform:rotate(-12deg);
+    transform:rotate(-8deg);
 
     pointer-events:none;
 
@@ -2187,8 +2202,8 @@ body{
     transform:translateY(-3px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.55),
-        0 20px 40px rgba(0,0,0,.14);
+        inset 0 1px 1px rgba(255,255,255,1),
+        0 16px 34px rgba(0,0,0,.12);
 
 }
 
@@ -2200,9 +2215,9 @@ body{
 
 .action-btn img{
 
-    width:30px;
+    width:28px;
 
-    height:30px;
+    height:28px;
 
     position:relative;
 
@@ -2216,39 +2231,39 @@ body{
 
     z-index:2;
 
-}
-
-/* Call */
-
-.call{
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(60,60,67,.45),
-            rgba(28,28,30,.20)
-        );
+    color:#111;
 
 }
 
-/* WhatsApp */
+/* Same style for both buttons */
 
+.call,
 .whatsapp{
 
     background:
         linear-gradient(
-            135deg,
-            rgba(37,211,102,.45),
-            rgba(37,211,102,.18)
+            180deg,
+            rgba(255,255,255,.78),
+            rgba(245,245,247,.55)
         );
+
+    border:1px solid rgba(255,255,255,.75);
 
 }
 
-@media(max-width:480px){
+@media (max-width:480px){
 
     .action-grid{
 
         grid-template-columns:1fr;
+
+    }
+
+    .action-btn{
+
+        height:66px;
+
+        font-size:16px;
 
     }
 
