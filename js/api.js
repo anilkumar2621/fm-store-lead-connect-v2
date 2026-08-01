@@ -25,6 +25,8 @@ const API = {
 
         try {
 
+            console.log('Sending to API:', data);
+
             const response = await fetch(CONFIG.API.BASE_URL, {
 
                 method: 'POST',
@@ -33,13 +35,17 @@ const API = {
 
             });
 
-            return await response.json();
+            const result = await response.json();
+
+            console.log('API Response:', result);
+
+            return result;
 
         }
 
         catch (error) {
 
-            console.error(error);
+            console.error('API Error:', error);
 
             return {
 
