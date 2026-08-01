@@ -81,7 +81,7 @@ const Home = {
 
                 </div>
 
-                <div>
+                <div class="card-content">
 
                     <h3>
 
@@ -113,7 +113,7 @@ const Home = {
 
                 </div>
 
-                <div>
+                <div class="card-content">
 
                     <h3>
 
@@ -145,7 +145,7 @@ const Home = {
 
                 </div>
 
-                <div>
+                <div class="card-content">
 
                     <h3>
 
@@ -240,7 +240,8 @@ const Home = {
         </div>
 
     </section>
-        <!-- ==========================================
+
+    <!-- ==========================================
          Quick Actions
     =========================================== -->
 
