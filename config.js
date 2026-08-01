@@ -71,7 +71,7 @@ const CONFIG = Object.freeze({
 
     API: {
 
-        BASE_URL: 'https://script.google.com/macros/s/AKfycbzQVRHuCzDp5FQqsoRqn5ocKavGx4eVXULeY96zuA6l_31MDhZ0QrQbGCh20RGtVXxhlw/exec',
+        BASE_URL: 'https://script.google.com/macros/s/AKfycbyzHdJXUgyErk95x1gnUNuj0gcIKZ_xqswPwvkWxM95wxeGQ7KrAc3fQ4o3rCbjFFO_fg/exec',
 
         TIMEOUT: 30000
 
