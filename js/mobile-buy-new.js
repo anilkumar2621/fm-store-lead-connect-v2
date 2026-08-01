@@ -504,7 +504,7 @@ ${UI.button({
 
             quantity: Validator.getValue('quantity'),
 
-            requirements: Validator.getValue('requirements'),
+            notes: Validator.getValue('requirements'),
 
             customerName: Validator.getValue('customerName'),
 
