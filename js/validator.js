@@ -56,6 +56,24 @@ const Validator = {
 
         element.classList.remove('fm-invalid');
 
+    },
+
+    required(id, message) {
+
+        if (this.getValue(id)) {
+
+            return true;
+
+        }
+
+        this.markInvalid(id);
+
+        this.focus(id);
+
+        UI.toast(message, 'warning');
+
+        return false;
+
     }
 
 };

@@ -408,17 +408,14 @@ ${UI.button({
 
         // Customer Name
 
-        if (!Validator.getValue('customerName')) {
+        if (!Validator.required(
+    'customerName',
+    'Please enter Full Name'
+)) {
 
-            Validator.markInvalid('customerName');
+    return false;
 
-            Validator.focus('customerName');
-
-            UI.toast('Please enter Full Name', 'warning');
-
-            return false;
-
-        }
+}
 
         // Mobile Number
 
@@ -471,7 +468,7 @@ ${UI.button({
        Submit
     ====================================================== */
 
-    submit() {
+    async submit() {
 
         if (!this.validate()) {
 
@@ -519,9 +516,17 @@ ${UI.button({
 
         };
 
-        console.log(enquiry);
+        const result = await API.post(enquiry);
 
-        UI.toast('Ready for Google Sheets Integration');
+if (result.success) {
+
+    UI.toast('Enquiry Submitted Successfully');
+
+} else {
+
+    UI.toast(result.message || 'Submission Failed', 'warning');
+
+}
 
         setTimeout(() => {
 
