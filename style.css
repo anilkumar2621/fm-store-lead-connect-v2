@@ -2585,11 +2585,25 @@ body{
 
     flex:1;
 
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+    text-align:left;
+
 }
 
 .fm-action-title{
 
     margin:0;
+
+    width:100%;
+
+    text-align:left;
 
     color:#111;
 
@@ -2603,7 +2617,11 @@ body{
 
 .fm-action-description{
 
+    width:100%;
+
     margin-top:8px;
+
+    text-align:left;
 
     color:#6e6e73;
 
