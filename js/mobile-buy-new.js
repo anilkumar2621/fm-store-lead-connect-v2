@@ -488,7 +488,7 @@ ${UI.button({
 
         const enquiry = {
 
-            enquiryType: 'New Mobile',
+            category: 'Mobiles',
 
             brand: Validator.getValue('brand'),
 
@@ -508,13 +508,18 @@ ${UI.button({
 
             customerName: Validator.getValue('customerName'),
 
-            customerPhone: Validator.getValue('customerPhone'),
+            phone: Validator.getValue('customerPhone'),
 
-            customerWhatsapp: this.getWhatsappNumber(),
+            whatsapp: this.getWhatsappNumber(),
 
-            contactMethod: Validator.getValue('contactMethod')
+            contactMethod: Validator.getValue('contactMethod'),
 
-        };
+        source: 'GitHub Pages',
+
+        device: navigator.platform,
+
+        browser: navigator.userAgent
+};
 
         const result = await API.post(enquiry);
 
