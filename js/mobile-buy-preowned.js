@@ -587,80 +587,90 @@ ${UI.button({
         return true;
 
     },
-        /* ======================================================
-       Submit
-    ====================================================== */
+/* ======================================================
+   Submit
+====================================================== */
 
-    submit() {
+async submit() {
 
-        if (!this.validate()) {
+    if (!this.validate()) {
 
-            return;
-
-        }
-
-        const button = document.querySelector('.btn');
-
-        if (button) {
-
-            button.disabled = true;
-
-            button.textContent = 'Submitting...';
-
-        }
-
-        const enquiry = {
-
-            enquiryType: 'Pre-Owned Mobile',
-
-            brand: Validator.getValue('brand'),
-
-            otherBrand: Validator.getValue('otherBrand'),
-
-            model: Validator.getValue('model'),
-
-            ram: Validator.getValue('ram'),
-
-            storage: Validator.getValue('storage'),
-
-            grade: Validator.getValue('grade'),
-
-            budget: Validator.getValue('budget'),
-
-            otherBudget: Validator.getValue('otherBudget'),
-
-            colour: Validator.getValue('colour'),
-
-            quantity: Validator.getValue('quantity'),
-
-            requirements: Validator.getValue('requirements'),
-
-            customerName: Validator.getValue('customerName'),
-
-            customerPhone: Validator.getValue('customerPhone'),
-
-            customerWhatsapp: this.getWhatsappNumber(),
-
-            contactMethod: Validator.getValue('contactMethod')
-
-        };
-
-        console.log(enquiry);
-
-        UI.toast('Ready for Google Sheets Integration');
-
-        setTimeout(() => {
-
-            if (button) {
-
-                button.disabled = false;
-
-                button.textContent = 'Submit Enquiry';
-
-            }
-
-        }, 1000);
+        return;
 
     }
 
-};
+    const button = document.querySelector('.btn');
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent = 'Submitting...';
+
+    }
+
+    const enquiry = {
+
+        category: 'Mobiles',
+
+        enquiryType: 'Pre-Owned',
+
+        brand: Validator.getValue('brand'),
+
+        otherBrand: Validator.getValue('otherBrand'),
+
+        model: Validator.getValue('model'),
+
+        ram: Validator.getValue('ram'),
+
+        storage: Validator.getValue('storage'),
+
+        grade: Validator.getValue('grade'),
+
+        budget: Validator.getValue('budget'),
+
+        otherBudget: Validator.getValue('otherBudget'),
+
+        colour: Validator.getValue('colour'),
+
+        quantity: Validator.getValue('quantity'),
+
+        requirements: Validator.getValue('requirements'),
+
+        customerName: Validator.getValue('customerName'),
+
+        phone: Validator.getValue('customerPhone'),
+
+        whatsapp: this.getWhatsappNumber(),
+
+        contactMethod: Validator.getValue('contactMethod'),
+
+        source: 'GitHub Pages',
+
+        device: navigator.platform,
+
+        browser: navigator.userAgent
+
+    };
+
+    const result = await API.post(enquiry);
+
+    if (result.success) {
+
+        UI.toast('Enquiry Submitted Successfully');
+
+    } else {
+
+        UI.toast(result.message || 'Submission Failed', 'warning');
+
+    }
+
+    if (button) {
+
+        button.disabled = false;
+
+        button.textContent = 'Submit Enquiry';
+
+    }
+
+}
