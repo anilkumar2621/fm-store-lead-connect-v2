@@ -671,6 +671,7 @@ async submit() {
 
         button.textContent = 'Submit Enquiry';
 
-    },
+    }
+},
 
 };
