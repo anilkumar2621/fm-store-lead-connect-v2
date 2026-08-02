@@ -268,6 +268,18 @@ ${UI.input({
 
 })}
 
+${UI.input({
+
+    id:'location',
+
+    label:'Location',
+
+    placeholder:'Village / Town',
+
+    required:true
+
+})}
+
 <div class="fm-field">
 
     <label class="fm-checkbox">
@@ -475,6 +487,7 @@ ${UI.button({
             'otherBudget',
             'customerName',
             'customerPhone',
+            'location',
             'customerWhatsapp'
         ].forEach(id => Validator.clearInvalid(id));
 
@@ -546,6 +559,17 @@ ${UI.button({
 
         }
 
+        // Location
+
+if (!Validator.required(
+    'location',
+    'Please enter Location'
+)) {
+
+    return false;
+
+}
+
         // Mobile Number
 
         const phone = Validator.getValue('customerPhone');
@@ -561,6 +585,7 @@ ${UI.button({
             return false;
 
         }
+
 
         // WhatsApp Number
 
@@ -611,7 +636,7 @@ async submit() {
 
     const enquiry = {
 
-        category: 'Mobiles',
+        category: 'Pre-Owned Mobile',
 
         enquiryType: 'Pre-Owned',
 
@@ -631,15 +656,17 @@ async submit() {
 
         otherBudget: Validator.getValue('otherBudget'),
 
-        colour: Validator.getValue('colour'),
+        color: Validator.getValue('colour'),
 
         quantity: Validator.getValue('quantity'),
 
-        requirements: Validator.getValue('requirements'),
+        notes: Validator.getValue('requirements'),
 
         customerName: Validator.getValue('customerName'),
 
         phone: Validator.getValue('customerPhone'),
+
+        location: Validator.getValue('location'),
 
         whatsapp: this.getWhatsappNumber(),
 

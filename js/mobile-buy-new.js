@@ -180,6 +180,18 @@ ${UI.input({
 
 })}
 
+${UI.input({
+
+    id:'location',
+
+    label:'Location',
+
+    placeholder:'Village / Town',
+
+    required:true
+
+})}
+
 <div class="fm-field">
 
     <label class="fm-checkbox">
@@ -369,6 +381,7 @@ ${UI.button({
             'otherBrand',
             'customerName',
             'customerPhone',
+            'location',
             'customerWhatsapp'
         ].forEach(id => Validator.clearInvalid(id));
 
@@ -411,6 +424,15 @@ ${UI.button({
         if (!Validator.required(
     'customerName',
     'Please enter Full Name'
+)) {
+
+    return false;
+
+}
+
+if (!Validator.required(
+    'location',
+    'Please enter Location'
 )) {
 
     return false;
@@ -488,7 +510,7 @@ ${UI.button({
 
         const enquiry = {
 
-            category: 'Mobiles',
+            category: 'New Mobile',
 
             brand: Validator.getValue('brand'),
 
@@ -500,7 +522,7 @@ ${UI.button({
 
             storage: Validator.getValue('storage'),
 
-            colour: Validator.getValue('colour'),
+            color: Validator.getValue('colour'),
 
             quantity: Validator.getValue('quantity'),
 
@@ -509,6 +531,8 @@ ${UI.button({
             customerName: Validator.getValue('customerName'),
 
             phone: Validator.getValue('customerPhone'),
+
+            location: Validator.getValue('location'),
 
             whatsapp: this.getWhatsappNumber(),
 
